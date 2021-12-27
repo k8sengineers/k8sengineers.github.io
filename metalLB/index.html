@@ -17,7 +17,7 @@
     
     
       
-        <title>Setupv1 - K8s Engineers</title>
+        <title>Metal LB - K8s Engineers</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup" class="md-skip">
+        <a href="#metallb-with-ingress-for-service-of-type-loadbalancer-in-onpremise-setup" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Setupv1
+              Metal LB
             
           </span>
         </div>
@@ -229,13 +229,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../k8s_monitoring/" class="md-tabs__link">
+      <a href="../k8s_monitoring/" class="md-tabs__link md-tabs__link--active">
         K8s Tooling
       </a>
     </li>
@@ -487,12 +489,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -561,14 +565,16 @@
               
   
   
+    
+  
   
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" checked>
       
       
       
@@ -611,11 +617,66 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../metalLB/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Metal LB
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Metal LB
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preparation" class="md-nav__link">
+    Preparation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-by-manifest" class="md-nav__link">
+    Installation By Manifest
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layer-2-configuration" class="md-nav__link">
+    Layer 2 Configuration
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1074,113 +1135,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configure-the-host-file-with-the-hostname-and-ips" class="md-nav__link">
-    Configure the host file with the hostname and IPs.
+  <a href="#preparation" class="md-nav__link">
+    Preparation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#download-coredns-from-the-website-unpack-the-binary-to-usrlocalbin-and-make-it-executable" class="md-nav__link">
-    Download CoreDNS from the website, unpack the binary to /usr/local/bin and make it executable.
+  <a href="#installation-by-manifest" class="md-nav__link">
+    Installation By Manifest
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-resolvconf-as-a-tool-to-manually-manage-etcresolvconf" class="md-nav__link">
-    Install resolvconf as a tool to manually manage /etc/resolv.conf.
+  <a href="#layer-2-configuration" class="md-nav__link">
+    Layer 2 Configuration
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#set-dns-as-default-in-etcnetworkmanagernetworkmanagerconf" class="md-nav__link">
-    Set dns as default in /etc/NetworkManager/NetworkManager.conf.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-nameserver-127001-to-etcresolvconfresolvconfdhead" class="md-nav__link">
-    Add nameserver 127.0.0.1 to /etc/resolvconf/resolv.conf.d/head.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-etccorednscorefile-and-paste-the-configuration-shown-below" class="md-nav__link">
-    Create /etc/coredns/Corefile and paste the configuration shown below.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#we-are-using-cloudflare-as-a-dns-provider1111" class="md-nav__link">
-    We are using Cloudflare as a DNS provider(1.1.1.1).
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-a-new-user-for-coredns-and-set-some-permissions-on-the-optcoredns-directory" class="md-nav__link">
-    Create a new user for CoreDNS and set some permissions on the /opt/coredns directory.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-the-systemd-service-unit-file-from-coredns-to-etcsystemdsystemcorednsservice" class="md-nav__link">
-    Download the SystemD service unit file from coredns to /etc/systemd/system/coredns.service.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disable-systemds-default-dns-server" class="md-nav__link">
-    Disable SystemD's default DNS server.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enable-and-start-coredns" class="md-nav__link">
-    Enable and start CoreDNS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#now-we-can-able-to-resolve-domain-names-again-eg-try-to-dig-short-kitedu-if-an-ip-address-is-printed-everything-works-fine" class="md-nav__link">
-    Now we can able to resolve domain names, again. E.g. try to dig +short kit.edu. If an IP address is printed, everything works fine.
-  </a>
-  
-    <nav class="md-nav" aria-label="Now we can able to resolve domain names, again. E.g. try to dig +short kit.edu. If an IP address is printed, everything works fine.">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#output" class="md-nav__link">
-    Output
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#output_1" class="md-nav__link">
-    Output
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#output_2" class="md-nav__link">
-    Output
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1197,108 +1168,81 @@
               
                 
 
-<h1 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h1>
-<h3 id="configure-the-host-file-with-the-hostname-and-ips">Configure the host file with the hostname and IPs.<a class="headerlink" href="#configure-the-host-file-with-the-hostname-and-ips" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>cat /etc/hosts
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="mf">192.168.0.100</span><span class="w"> </span><span class="n">dnsserver</span><span class="p">.</span><span class="n">cruise</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="mf">192.168.135.21</span><span class="w"> </span><span class="n">test01</span><span class="p">.</span><span class="n">cruise</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="mf">192.168.0.100</span><span class="w"> </span><span class="n">dnsserver</span><span class="w"></span>
-<span class="mf">127.0.0.1</span><span class="w"> </span><span class="n">localhost</span><span class="w"></span>
-</code></pre></div>
-<h3 id="download-coredns-from-the-website-unpack-the-binary-to-usrlocalbin-and-make-it-executable">Download CoreDNS from the website, unpack the binary to <mark>/usr/local/bin</mark> and make it executable.<a class="headerlink" href="#download-coredns-from-the-website-unpack-the-binary-to-usrlocalbin-and-make-it-executable" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>wget https://github.com/coredns/coredns/releases/download/v1.8.6/coredns_1.8.6_linux_amd64.tgz  
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>tar -xvzf coredns_1.8.6_linux_amd64.tgz
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>cp coredns /usr/local/bin/
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo chmod +x /usr/local/bin/coredns
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>ll /usr/local/bin/coredns
-</code></pre></div></p>
-<h3 id="install-resolvconf-as-a-tool-to-manually-manage-etcresolvconf">Install resolvconf as a tool to manually manage <mark>/etc/resolv.conf</mark>.<a class="headerlink" href="#install-resolvconf-as-a-tool-to-manually-manage-etcresolvconf" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>apt install resolvconf
-</code></pre></div>
-<h3 id="set-dns-as-default-in-etcnetworkmanagernetworkmanagerconf">Set dns as default in <mark>/etc/NetworkManager/NetworkManager.conf</mark>.<a class="headerlink" href="#set-dns-as-default-in-etcnetworkmanagernetworkmanagerconf" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>vi /etc/NetworkManager/NetworkManager.conf
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>dns=default
-</code></pre></div></p>
-<h3 id="add-nameserver-127001-to-etcresolvconfresolvconfdhead">Add nameserver 127.0.0.1 to <mark>/etc/resolvconf/resolv.conf.d/head</mark>.<a class="headerlink" href="#add-nameserver-127001-to-etcresolvconfresolvconfdhead" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>vi /etc/resolvconf/resolv.conf.d/head
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>nameserver 127.0.0.1
-</code></pre></div></p>
-<h3 id="create-etccorednscorefile-and-paste-the-configuration-shown-below">Create <mark>/etc/coredns/Corefile</mark> and paste the configuration shown below.<a class="headerlink" href="#create-etccorednscorefile-and-paste-the-configuration-shown-below" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>vi /etc/coredns/Corefile
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>groophy.org:53 {
-        forward . tls://2606:4700:4700::1111 tls://1.1.1.1
-        hosts /etc/hosts
-log
-        errors
-        Cache
-}
-.:53 {
-        forward . tls://2606:4700:4700::1111 tls://1.1.1.1
-        log
-        errors
-        Cache
-}
-</code></pre></div></p>
-<h3 id="we-are-using-cloudflare-as-a-dns-provider1111">We are using Cloudflare as a DNS provider(1.1.1.1).<a class="headerlink" href="#we-are-using-cloudflare-as-a-dns-provider1111" title="Permanent link">&para;</a></h3>
-<h3 id="create-a-new-user-for-coredns-and-set-some-permissions-on-the-optcoredns-directory">Create a new user for CoreDNS and set some permissions on the <mark>/opt/coredns</mark> directory.<a class="headerlink" href="#create-a-new-user-for-coredns-and-set-some-permissions-on-the-optcoredns-directory" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>sudo useradd -d /var/lib/coredns -m coredns
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo chown coredns:coredns /opt/coredns
-</code></pre></div></p>
-<h3 id="download-the-systemd-service-unit-file-from-coredns-to-etcsystemdsystemcorednsservice">Download the SystemD service unit file from coredns to <mark>/etc/systemd/system/coredns.service</mark>.<a class="headerlink" href="#download-the-systemd-service-unit-file-from-coredns-to-etcsystemdsystemcorednsservice" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>wget https://github.com/coredns/deployment/blob/master/systemd/coredns.service   
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>mv coredns.service /etc/systemd/system/
-</code></pre></div></p>
-<h3 id="disable-systemds-default-dns-server">Disable SystemD's default DNS server.<a class="headerlink" href="#disable-systemds-default-dns-server" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>sudo systemctl stop systemd-resolved <span class="o">&amp;&amp;</span> sudo systemctl disable systemd-resolved
-</code></pre></div>
-<details class="note" open="open">
-<summary>Note</summary>
-<p>From that moment on, you will not be able to resolve any web pages anymore, unless you enable DNS again</p>
-</details>
-<h3 id="enable-and-start-coredns">Enable and start CoreDNS<a class="headerlink" href="#enable-and-start-coredns" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> coredns <span class="o">&amp;&amp;</span> sudo systemctl start coredns
-</code></pre></div>
-<h3 id="now-we-can-able-to-resolve-domain-names-again-eg-try-to-dig-short-kitedu-if-an-ip-address-is-printed-everything-works-fine">Now we can able to resolve domain names, again. E.g. try to <mark>dig +short kit.edu</mark>. If an IP address is printed, everything works fine.<a class="headerlink" href="#now-we-can-able-to-resolve-domain-names-again-eg-try-to-dig-short-kitedu-if-an-ip-address-is-printed-everything-works-fine" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>dig +short kit.edu
-</code></pre></div>
-<h4 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h4>
-<p><div class="highlight"><pre><span></span><code><span class="mf">141.3.128.6</span><span class="w"></span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>nslookup dnsserver.groophy.org
-</code></pre></div></p>
-<h4 id="output_1">Output<a class="headerlink" href="#output_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nl">Server</span><span class="p">:</span><span class="w">         </span><span class="mf">192.168.0.100</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w">        </span><span class="mf">192.168.0.100</span><span class="err">#</span><span class="mi">53</span><span class="w"></span>
-
-<span class="nl">Name</span><span class="p">:</span><span class="w">   </span><span class="n">dnsserver</span><span class="p">.</span><span class="n">cruise</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w"> </span><span class="mf">192.168.0.100</span><span class="w"></span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>nslookup google.com
-</code></pre></div>
-<h4 id="output_2">Output<a class="headerlink" href="#output_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nl">Server</span><span class="p">:</span><span class="w">         </span><span class="mf">192.168.0.100</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w">        </span><span class="mf">192.168.0.100</span><span class="err">#</span><span class="mi">53</span><span class="w"></span>
-
-<span class="n">Non</span><span class="o">-</span><span class="n">authoritative</span><span class="w"> </span><span class="nl">answer</span><span class="p">:</span><span class="w"></span>
-<span class="nl">Name</span><span class="p">:</span><span class="w">   </span><span class="n">google</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w"> </span><span class="mf">142.250.71.14</span><span class="w"></span>
-<span class="nl">Name</span><span class="p">:</span><span class="w">   </span><span class="n">google</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w"> </span><span class="mi">2404</span><span class="o">:</span><span class="mi">6800</span><span class="o">:</span><span class="mi">4007</span><span class="o">:</span><span class="mi">824</span><span class="o">::</span><span class="mi">200</span><span class="n">e</span><span class="w"></span>
-</code></pre></div>
+<h1 id="metallb-with-ingress-for-service-of-type-loadbalancer-in-onpremise-setup">MetalLB with Ingress for service of type LoadBalancer in OnPremise setup.<a class="headerlink" href="#metallb-with-ingress-for-service-of-type-loadbalancer-in-onpremise-setup" title="Permanent link">&para;</a></h1>
 <div class="admonition info">
-<p class="admonition-title">Conclusion</p>
-<p>Able to resolve both internal servers and outside the world.</p>
+<p class="admonition-title">Requirements</p>
+<p>MetalLB requires the following to function:</p>
+<ul>
+<li>
+<p>A Kubernetes cluster, running Kubernetes 1.13.0 or later, that does not already have network load-balancing functionality.</p>
+</li>
+<li>
+<p>A cluster network configuration that can coexist with MetalLB.</p>
+</li>
+<li>
+<p>Some IPv4 addresses for MetalLB to hand out.</p>
+</li>
+<li>
+<p>When using the BGP operating mode, you will need one or more routers capable of speaking BGP.</p>
+</li>
+<li>
+<p>Traffic on port 7946 (TCP &amp; UDP) must be allowed between nodes, as required by memberlist.</p>
+</li>
+</ul>
 </div>
+<h2 id="preparation">Preparation<a class="headerlink" href="#preparation" title="Permanent link">&para;</a></h2>
+<p>If you’re using kube-proxy in IPVS mode, since Kubernetes v1.14.2 you have to enable strict ARP mode.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>you don’t need this if you’re using kube-router as service-proxy because it is enabling strict ARP by default.</p>
+</div>
+<p>You can achieve this by editing kube-proxy config in current cluster:
+<div class="highlight"><pre><span></span><code>kubectl edit configmap -n kube-system kube-proxy
+</code></pre></div>
+and set:
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">kubeproxy.config.k8s.io/v1alpha1</span> 
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">KubeProxy</span>
+<span class="nt">Configuration mode</span><span class="p">:</span> <span class="s">&quot;ipvs&quot;</span> 
+<span class="nt">ipvs</span><span class="p">:</span> 
+   <span class="nt">strictARP</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div></p>
+<h2 id="installation-by-manifest">Installation By Manifest<a class="headerlink" href="#installation-by-manifest" title="Permanent link">&para;</a></h2>
+<p>To install MetalLB, apply the manifest:
+<div class="highlight"><pre><span></span><code>kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/namespace.yaml kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.11.0/manifests/metallb.yaml
+</code></pre></div></p>
+<h2 id="layer-2-configuration">Layer 2 Configuration<a class="headerlink" href="#layer-2-configuration" title="Permanent link">&para;</a></h2>
+<p>Layer 2 mode is the simplest to configure: in many cases, you don’t need any protocol-specific configuration, only IP addresses.</p>
+<p>Layer 2 mode does not require the IPs to be bound to the network interfaces of your worker nodes. It works by responding to ARP requests on your local network directly, to give the machine’s MAC address to clients.</p>
+<p>For example, the following configuration gives MetalLB control over IPs from <mark>192.168.1.240</mark> to <mark>192.168.1.250</mark>, and configures Layer 2 mode:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="nt">v1 kind</span><span class="p">:</span> <span class="nt">ConfigMap metadata</span><span class="p">:</span> <span class="nt">namespace</span><span class="p">:</span> <span class="nt">metallb-system name</span><span class="p">:</span> <span class="nt">config data</span><span class="p">:</span> <span class="nt">config</span><span class="p">:</span> <span class="nt">| address-pools</span><span class="p">:</span> <span class="nt">- name</span><span class="p">:</span> <span class="nt">default protocol</span><span class="p">:</span> <span class="nt">layer2 addresses</span><span class="p">:</span> <span class="err">-</span> <span class="l l-Scalar l-Scalar-Plain">192.168.1.240-192.168.1.250</span>
+</code></pre></div>
+<h1 id="install-ingress-for-metallb">Install Ingress for metalLB<a class="headerlink" href="#install-ingress-for-metallb" title="Permanent link">&para;</a></h1>
+<p><div class="highlight"><pre><span></span><code>helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>helm repo update
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>helm repo list
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>helm search repo ingress
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>helm show values ingress-nginx/ingress-nginx &gt; ingress-nginxValues.yaml
+</code></pre></div></p>
+<p>Update values file with changes mentioned below</p>
+<p><div class="highlight"><pre><span></span><code>vim ingress-nginxValues.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nl">hostNetwork</span><span class="p">:</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
+<span class="w">  </span><span class="cp">## Use host ports 80 and 443</span>
+<span class="w">  </span><span class="cp">## Disabled by default</span>
+<span class="w">  </span><span class="cp">##</span>
+<span class="w">  </span><span class="nl">hostPort</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nl">enabled</span><span class="p">:</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
+
+<span class="w"> </span><span class="cp">## DaemonSet or Deployment</span>
+<span class="w">  </span><span class="cp">##</span>
+<span class="w">  </span><span class="nl">kind</span><span class="p">:</span><span class="w"> </span><span class="n">DaemonSet</span><span class="w"></span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code>helm install cruise-ingress ingress-nginx/ingress-nginx -n ingress-nginx --values ingress-nginxValues.yaml
+</code></pre></div>
 
               
             </article>
@@ -1313,6 +1257,41 @@ log
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../nginx-ingress/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Nginx" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Nginx
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../1/" class="md-footer__link md-footer__link--next" aria-label="Next: Traffik" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Traffik
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

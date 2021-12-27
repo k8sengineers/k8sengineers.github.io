@@ -17,7 +17,7 @@
     
     
       
-        <title>Kubernetes Setup With Backup and Restore Solution - K8s Engineers</title>
+        <title>Kubeadm Cluster Setup - K8s Engineers</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kubernetes-setup-with-backup-and-restiore-solution" class="md-skip">
+        <a href="#multi-master-node-cluster" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kubernetes Setup With Backup and Restore Solution
+              Kubeadm Cluster Setup
             
           </span>
         </div>
@@ -213,13 +213,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../kubespray/" class="md-tabs__link">
+      <a href="../kubespray/" class="md-tabs__link md-tabs__link--active">
         K8s Setup
       </a>
     </li>
@@ -229,15 +231,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../k8s_monitoring/" class="md-tabs__link md-tabs__link--active">
+      <a href="../k8s_monitoring/" class="md-tabs__link">
         K8s Tooling
       </a>
     </li>
@@ -389,12 +389,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -439,11 +441,180 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../kubeadm_setup/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Kubeadm Cluster Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Kubeadm Cluster Setup
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-haproxy-load-balancer-on-load-balancer-host" class="md-nav__link">
+    Installing the HAProxy load balancer On Load Balancer Host
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-client-tools-on-the-bastion-host" class="md-nav__link">
+    Installing the client tools on the Bastion Host
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing the client tools on the Bastion Host">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-cfssl" class="md-nav__link">
+    Installing cfssl:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-kubectl" class="md-nav__link">
+    Installing kubectl:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-the-tls-certificates" class="md-nav__link">
+    Generating the TLS certificates
+  </a>
+  
+    <nav class="md-nav" aria-label="Generating the TLS certificates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-certificate-authority" class="md-nav__link">
+    Creating a certificate authority:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-certificate-for-the-etcd-cluster" class="md-nav__link">
+    Creating the certificate for the Etcd cluster:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-the-master-and-worker-nodes-for-kubeadm" class="md-nav__link">
+    Preparing the Master and Worker nodes for kubeadm
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing the Master and Worker nodes for kubeadm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-docker" class="md-nav__link">
+    Installing Docker:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-kubeadm-kublet-and-kubectl" class="md-nav__link">
+    Installing kubeadm, kublet, and kubectl:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-and-configuring-etcd-on-the-master-nodes" class="md-nav__link">
+    Installing and configuring Etcd on the Master Nodes.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initializing-the-master-nodes" class="md-nav__link">
+    Initializing the master nodes
+  </a>
+  
+    <nav class="md-nav" aria-label="Initializing the master nodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initializing-the-master01-node" class="md-nav__link">
+    Initializing the master01 node:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-master02-and-03" class="md-nav__link">
+    Configure Master02 and 03
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure Master02 and 03">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initializing-the-worker-nodes" class="md-nav__link">
+    Initializing the worker nodes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -489,14 +660,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
       
@@ -551,87 +720,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Kubernetes Setup With Backup and Restore Solution
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../k8s_backup_restore/" class="md-nav__link">
         Kubernetes Setup With Backup and Restore Solution
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#configure-ha-proxy-to-build-a-multi-master-kubernetes-cluster" class="md-nav__link">
-    Configure HA proxy to build a Multi-master Kubernetes cluster:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deploying-multi-master-kubernetes-cluster-with-kubespray" class="md-nav__link">
-    Deploying Multi-master Kubernetes cluster with Kubespray:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#update-the-ha-proxy-server-details" class="md-nav__link">
-    Update the HA-Proxy server details
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configure-minio-on-the-ansible-node" class="md-nav__link">
-    Configure Minio on the Ansible Node:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configure-velero" class="md-nav__link">
-    Configure Velero:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#validate-the-access-from-the-ansible-node" class="md-nav__link">
-    Validate the access from the Ansible node:
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1154,44 +1247,137 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configure-ha-proxy-to-build-a-multi-master-kubernetes-cluster" class="md-nav__link">
-    Configure HA proxy to build a Multi-master Kubernetes cluster:
+  <a href="#installing-the-haproxy-load-balancer-on-load-balancer-host" class="md-nav__link">
+    Installing the HAProxy load balancer On Load Balancer Host
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-multi-master-kubernetes-cluster-with-kubespray" class="md-nav__link">
-    Deploying Multi-master Kubernetes cluster with Kubespray:
+  <a href="#installing-the-client-tools-on-the-bastion-host" class="md-nav__link">
+    Installing the client tools on the Bastion Host
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing the client tools on the Bastion Host">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-cfssl" class="md-nav__link">
+    Installing cfssl:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-kubectl" class="md-nav__link">
+    Installing kubectl:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-the-tls-certificates" class="md-nav__link">
+    Generating the TLS certificates
+  </a>
+  
+    <nav class="md-nav" aria-label="Generating the TLS certificates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-certificate-authority" class="md-nav__link">
+    Creating a certificate authority:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-certificate-for-the-etcd-cluster" class="md-nav__link">
+    Creating the certificate for the Etcd cluster:
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#update-the-ha-proxy-server-details" class="md-nav__link">
-    Update the HA-Proxy server details
+  <a href="#preparing-the-master-and-worker-nodes-for-kubeadm" class="md-nav__link">
+    Preparing the Master and Worker nodes for kubeadm
   </a>
+  
+    <nav class="md-nav" aria-label="Preparing the Master and Worker nodes for kubeadm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-docker" class="md-nav__link">
+    Installing Docker:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-kubeadm-kublet-and-kubectl" class="md-nav__link">
+    Installing kubeadm, kublet, and kubectl:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-and-configuring-etcd-on-the-master-nodes" class="md-nav__link">
+    Installing and configuring Etcd on the Master Nodes.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configure-minio-on-the-ansible-node" class="md-nav__link">
-    Configure Minio on the Ansible Node:
+  <a href="#initializing-the-master-nodes" class="md-nav__link">
+    Initializing the master nodes
   </a>
+  
+    <nav class="md-nav" aria-label="Initializing the master nodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initializing-the-master01-node" class="md-nav__link">
+    Initializing the master01 node:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configure-velero" class="md-nav__link">
-    Configure Velero:
+  <a href="#configure-master02-and-03" class="md-nav__link">
+    Configure Master02 and 03
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure Master02 and 03">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initializing-the-worker-nodes" class="md-nav__link">
+    Initializing the worker nodes
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#validate-the-access-from-the-ansible-node" class="md-nav__link">
-    Validate the access from the Ansible node:
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1208,277 +1394,346 @@
               
                 
 
-<h1 id="kubernetes-setup-with-backup-and-restiore-solution">Kubernetes Setup With Backup and Restiore Solution<a class="headerlink" href="#kubernetes-setup-with-backup-and-restiore-solution" title="Permanent link">&para;</a></h1>
-<ul>
-<li>Cluster Build Tool  -Kubespray</li>
-<li>Object Storage  -Minio</li>
-<li>Backup Solution  -Velero</li>
-</ul>
-<details class="info" open="open">
-<summary>For this activity, deploy 5 AWS instances with the Security groups</summary>
-<p>All traffic is enabled between the instances</p>
-<p>All traffic enabled for the testing machine(Our Laptop)</p>
-</details>
+<h1 id="multi-master-node-cluster">Multi Master Node Cluster<a class="headerlink" href="#multi-master-node-cluster" title="Permanent link">&para;</a></h1>
+<p>Configuring cluster with 3 masters, 3 workers and a load balancer with below configuration.
+Bastion host to access the cluster from outside.</p>
 <table>
 <thead>
 <tr>
-<th>Node Name</th>
-<th>Instance Details</th>
+<th align="center"><strong>Category</strong></th>
+<th align="center"><strong>Configuration</strong></th>
+<th align="center"><strong>Count</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Ansible Node</td>
-<td>-t2.micro</td>
+<td align="center"><p>Load Balancer</p><p>(HA-Proxy)</p></td>
+<td align="center"><p>CPUs: 2</p><p>RAM: 2GB</p><p>Disk: 10Gb</p><p>NIC: 1</p></td>
+<td align="center"><p></p><p>1</p><p></p></td>
 </tr>
 <tr>
-<td>Control Plane (2-Nodes)</td>
-<td>-t2.medium</td>
+<td align="center">Master Nodes</td>
+<td align="center"><p>CPUs: 2</p><p>RAM: 2GB</p><p>Disk: 10GB</p><p>NIC: 1</p></td>
+<td align="center"><p></p><p>3</p></td>
 </tr>
 <tr>
-<td>Worker (2-Nodes)</td>
-<td>-t2.medium</td>
+<td align="center">Worker Nodes</td>
+<td align="center"><p>CPUs: 2</p><p>RAM: 2GB</p><p>Disk: 10GB</p><p>NIC: 1</p></td>
+<td align="center"><p></p><p>3</p></td>
+</tr>
+<tr>
+<td align="center">Bastion</td>
+<td align="center"><p>CPUs: 1</p><p>RAM: 2GB</p><p>Disk: 10GB</p><p>NIC: 1</p></td>
+<td align="center"><p></p><p>1</p><p></p></td>
 </tr>
 </tbody>
 </table>
-<p>Download the pem-key and transfer the pem-key to ansible node.
-<div class="highlight"><pre><span></span><code>scp -i &lt;pemkey&gt; &lt;pemkey&gt; &lt;user&gt;@&lt;IP&gt;:/home/ubuntu/
+<p>Share the SSH public key of the Bastion host to the rest of the server for transferring the certificates.</p>
+<h2 id="installing-the-haproxy-load-balancer-on-load-balancer-host">Installing the HAProxy load balancer On Load Balancer Host<a class="headerlink" href="#installing-the-haproxy-load-balancer-on-load-balancer-host" title="Permanent link">&para;</a></h2>
+<p>To deploy three Kubernetes master nodes, one needs to deploy an HAPRoxy load balancer in front of them to distribute the traffic.</p>
+<p><div class="highlight"><pre><span></span><code>apt-get update
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>cp /home/ubuntu/&lt;pemkey&gt; .
+<div class="highlight"><pre><span></span><code>apt-get upgrade
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>chmod <span class="m">400</span> &lt;pemkey&gt;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>vi /etc/hosts
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="mf">172.31.27.136</span><span class="w">   </span><span class="n">cruise</span><span class="p">.</span><span class="n">org</span><span class="w"></span>
-</code></pre></div></p>
-<h3 id="configure-ha-proxy-to-build-a-multi-master-kubernetes-cluster">Configure HA proxy to build a Multi-master Kubernetes cluster:<a class="headerlink" href="#configure-ha-proxy-to-build-a-multi-master-kubernetes-cluster" title="Permanent link">&para;</a></h3>
-<p>Download and install the haproxy
-<div class="highlight"><pre><span></span><code>apt-get update <span class="o">&amp;&amp;</span> apt-get install haproxy -y
-</code></pre></div>
-Update haproxy configuration with as below with the details of the Ansible and Master nodes IP
-<div class="highlight"><pre><span></span><code>vi /etc/haproxy/haproxy.cfg
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">listen</span><span class="w"> </span><span class="n">kubernetes</span><span class="o">-</span><span class="n">apiserver</span><span class="o">-</span><span class="n">https</span><span class="w"></span>
-<span class="w">  </span><span class="n">bind</span><span class="w"> </span><span class="nl">ansiblenodeIP</span><span class="p">:</span><span class="mi">8383</span><span class="w"></span>
-<span class="w">  </span><span class="n">mode</span><span class="w"> </span><span class="n">tcp</span><span class="w"></span>
-<span class="w">  </span><span class="n">option</span><span class="w"> </span><span class="n">log</span><span class="o">-</span><span class="n">health</span><span class="o">-</span><span class="n">checks</span><span class="w"></span>
-<span class="w">  </span><span class="n">timeout</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="mi">3</span><span class="n">h</span><span class="w"></span>
-<span class="w">  </span><span class="n">timeout</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="mi">3</span><span class="n">h</span><span class="w"></span>
-<span class="w">  </span><span class="n">server</span><span class="w"> </span><span class="n">master1</span><span class="w"> </span><span class="o">&lt;</span><span class="n">IP1</span><span class="o">&gt;:</span><span class="mi">6443</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="n">check</span><span class="o">-</span><span class="n">ssl</span><span class="w"> </span><span class="n">verify</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="n">inter</span><span class="w"> </span><span class="mi">10000</span><span class="w"></span>
-<span class="w">  </span><span class="n">server</span><span class="w"> </span><span class="n">master2</span><span class="w"> </span><span class="o">&lt;</span><span class="n">IP2</span><span class="o">&gt;:</span><span class="mi">6443</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="n">check</span><span class="o">-</span><span class="n">ssl</span><span class="w"> </span><span class="n">verify</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="n">inter</span><span class="w"> </span><span class="mi">10000</span><span class="w"></span>
-<span class="w">  </span><span class="n">balance</span><span class="w"> </span><span class="n">roundrobin</span><span class="w"></span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>systemctl restart haproxy
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>netstat -atnlp
-</code></pre></div></p>
-<h3 id="deploying-multi-master-kubernetes-cluster-with-kubespray">Deploying Multi-master Kubernetes cluster with Kubespray:<a class="headerlink" href="#deploying-multi-master-kubernetes-cluster-with-kubespray" title="Permanent link">&para;</a></h3>
-<p>Install Ansible and PIP</p>
-<p><div class="highlight"><pre><span></span><code>apt update <span class="o">&amp;&amp;</span> apt install software-properties-common -y
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>add-apt-repository --yes --update ppa:ansible/ansible
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>apt install ansible -y
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>ansible --version
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>apt install python3-pip -y
-</code></pre></div>
-Clone the Kubespray source code and install requirements through Pip.
-<div class="highlight"><pre><span></span><code>git clone https://github.com/kubernetes-sigs/kubespray.git
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> kubespray/
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>pip3 install -r requirements.txt
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>cp -rfp inventory/sample inventory/mycluster
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">declare</span> -a <span class="nv">IPS</span><span class="o">=(</span>&lt;master01_IP&gt; &lt;master02_IP&gt; &lt;Worker01_IP&gt; &lt;Worker02_IP&gt;<span class="o">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nv">CONFIG_FILE</span><span class="o">=</span>inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py <span class="si">${</span><span class="nv">IPS</span><span class="p">[@]</span><span class="si">}</span>
-</code></pre></div></p>
-<h3 id="update-the-ha-proxy-server-details">Update the HA-Proxy server details<a class="headerlink" href="#update-the-ha-proxy-server-details" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>vi inventory/mycluster/group_vars/all/all.yml
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">## External LB example config</span>
-<span class="nl">apiserver_loadbalancer_domain_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cruise.org&quot;</span><span class="w"></span>
-<span class="nl">loadbalancer_apiserver</span><span class="p">:</span><span class="w"></span>
-<span class="w">   </span><span class="nl">address</span><span class="p">:</span><span class="w"> </span><span class="mf">172.31.27.136</span><span class="w"></span>
-<span class="w">   </span><span class="nl">port</span><span class="p">:</span><span class="w"> </span><span class="mi">8383</span><span class="w"></span>
-<span class="cp">## Internal loadbalancers for apiservers</span>
-<span class="nl">loadbalancer_apiserver_localhost</span><span class="p">:</span><span class="w"> </span><span class="nb">false</span><span class="w"></span>
-</code></pre></div>
-Enable Kubernetes dashboard by updating the below files
-<div class="highlight"><pre><span></span><code>vi inventory/sample/group_vars/k8s_cluster/addons.yml
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>vi inventory/mycluster/group_vars/k8s_cluster/addons.yml
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp"># Kubernetes dashboard</span>
-<span class="cp"># RBAC required. see docs/getting-started.md for access details.</span>
-<span class="nl">dashboard_enabled</span><span class="p">:</span><span class="w"> </span><span class="nb">true</span><span class="w"></span>
-</code></pre></div>
-Deploy cluster with below Ansible command.
-<div class="highlight"><pre><span></span><code>ansible all -m ping -i inventory/mycluster/hosts.yaml --user ubuntu --private-key ../kmvelero.pem
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>ansible-playbook -i inventory/mycluster/hosts.yaml  --user ubuntu --private-key kmvelero.pem --become cluster.yml
-</code></pre></div>
-On Master Node:
-<div class="highlight"><pre><span></span><code>kubectl get nodes
-</code></pre></div></p>
-<details class="success">
-<summary>Output</summary>
-<div class="highlight"><pre><span></span><code><span class="n">NAME</span><span class="w">    </span><span class="n">STATUS</span><span class="w">   </span><span class="n">ROLES</span><span class="w">                  </span><span class="n">AGE</span><span class="w">     </span><span class="n">VERSION</span><span class="w"></span>
-<span class="n">node1</span><span class="w">   </span><span class="n">Ready</span><span class="w">    </span><span class="n">control</span><span class="o">-</span><span class="n">plane</span><span class="p">,</span><span class="n">master</span><span class="w">   </span><span class="mi">5</span><span class="n">h14m</span><span class="w">   </span><span class="n">v1</span><span class="mf">.22.3</span><span class="w"></span>
-<span class="n">node2</span><span class="w">   </span><span class="n">Ready</span><span class="w">    </span><span class="n">control</span><span class="o">-</span><span class="n">plane</span><span class="p">,</span><span class="n">master</span><span class="w">   </span><span class="mi">5</span><span class="n">h14m</span><span class="w">   </span><span class="n">v1</span><span class="mf">.22.3</span><span class="w"></span>
-<span class="n">node3</span><span class="w">   </span><span class="n">Ready</span><span class="w">    </span><span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span><span class="w">                 </span><span class="mi">5</span><span class="n">h13m</span><span class="w">   </span><span class="n">v1</span><span class="mf">.22.3</span><span class="w"></span>
-<span class="n">node4</span><span class="w">   </span><span class="n">Ready</span><span class="w">    </span><span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span><span class="w">                 </span><span class="mi">5</span><span class="n">h13m</span><span class="w">   </span><span class="n">v1</span><span class="mf">.22.3</span><span class="w"></span>
-</code></pre></div>
-</details>
-<h3 id="configure-minio-on-the-ansible-node">Configure Minio on the Ansible Node:<a class="headerlink" href="#configure-minio-on-the-ansible-node" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>wget https://dl.min.io/server/minio/release/linux-amd64/minio
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>chmod +x minio
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>ll /usr/bin/minio
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">MINIO_ROOT_USER</span><span class="o">=</span>&lt;Username&gt;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">MINIO_ROOT_PASSWORD</span><span class="o">=</span>&lt;Password&gt;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>nohup minio server --console-address &lt;AnsibleNodeIP&gt;:&lt;Port&gt; /data &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
-</code></pre></div>
-Manually create the bucket by accessing the Minio Console.</p>
-<h3 id="configure-velero">Configure Velero:<a class="headerlink" href="#configure-velero" title="Permanent link">&para;</a></h3>
-<p>Switch to any master and download the velero source code and configure it.
-<div class="highlight"><pre><span></span><code>Kubernetes Master Node01
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>ssh -i kmvelero.pem &lt;user&gt;@&lt;IP&gt;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>wget https://github.com/vmware-tanzu/velero/releases/download/v1.7.0/velero-v1.7.0-linux-amd64.tar.gz
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>tar -xvzf velero-v1.7.0-linux-amd64.tar.gz
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>mv velero-v1.7.0-linux-amd64/velero /usr/local/bin/
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>wget https://github.com/digitalocean/velero-plugin/archive/refs/tags/v1.0.0.tar.gz
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>nohup tar -xvzf v1.0.0.tar.gz
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">source</span> &lt;<span class="o">(</span>velero completion bash<span class="o">)</span>
-</code></pre></div>
-Provide the username and password of the Minio console.
-<div class="highlight"><pre><span></span><code>cp velero-plugin-1.0.0/examples/cloud-credentials cloud-credentials
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>vi cloud-credentials
-</code></pre></div>
-[default]
-<div class="highlight"><pre><span></span><code><span class="nv">aws_access_key_id</span><span class="o">=</span>&lt;MinioUsername&gt;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nv">aws_secret_access_key</span><span class="o">=</span>&lt;MinioPassword&gt;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>Initiate Velero to store the backup <span class="k">in</span> the Minio buckets.
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>velero install --provider aws --plugins velero/velero-plugin-for-aws:v1.0.0 --bucket &lt;bucketname created <span class="k">in</span> the minio console&gt; -- backup-location-configregion<span class="o">=</span>minio,s3ForcePathStyle<span class="o">=</span>true,s3Url<span class="o">=</span>http://ansible_host<span class="o">(</span>minio<span class="o">)</span>:9000 --secret-file &lt;CredentialFile&gt; 
-</code></pre></div>
-Validate the access:
-<div class="highlight"><pre><span></span><code>velero get backup-location
-</code></pre></div></p>
-<details class="success">
-<summary>output</summary>
-<div class="highlight"><pre><span></span><code><span class="n">NAME</span><span class="w">      </span><span class="n">PROVIDER</span><span class="w">   </span><span class="n">BUCKET</span><span class="o">/</span><span class="n">PREFIX</span><span class="w">   </span><span class="n">PHASE</span><span class="w">       </span><span class="n">LAST</span><span class="w"> </span><span class="n">VALIDATED</span><span class="w">                  </span><span class="n">ACCESS</span><span class="w"> </span><span class="n">MODE</span><span class="w">   </span><span class="n">DEFAULT</span><span class="w"></span>
-<span class="k">default</span><span class="w">   </span><span class="n">aws</span><span class="w">        </span><span class="n">kmvbucket</span><span class="w">       </span><span class="n">Available</span><span class="w">   </span><span class="mi">2021-11-09</span><span class="w"> </span><span class="mi">12</span><span class="o">:</span><span class="mi">08</span><span class="o">:</span><span class="mi">44</span><span class="w"> </span><span class="o">+</span><span class="mo">0000</span><span class="w"> </span><span class="n">UTC</span><span class="w">   </span><span class="n">ReadWrite</span><span class="w">     </span><span class="nb">true</span><span class="w"></span>
-</code></pre></div>
-</details>
-<p>Copy the kubeconfig file to the Ansible node. <br />
-<div class="highlight"><pre><span></span><code>cp /etc/kubernetes/admin.conf /home/ubuntu/
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>chmod <span class="m">755</span> /home/ubuntu/admin.conf
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>scp -i kmvelero.pem &lt;user&gt;@&lt;IP&gt;:/home/ubuntu/admin.conf 
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>kubeconfig
-</code></pre></div>
-Configure Velero on the Ansible Node to access it from out of the cluster:
-<div class="highlight"><pre><span></span><code>wget https://github.com/vmware-tanzu/velero/releases/download/v1.7.0/velero-v1.7.0-linux-amd64.tar.gz
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>nohup tar -xvzf velero-v1.7.0-linux-amd64.tar.gz
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>mv velero-v1.7.0-linux-amd64/velero /usr/local/bin/
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>wget https://github.com/digitalocean/velero-plugin/archive/refs/tags/v1.0.0.tar.gz
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>nohup tar -xvzf v1.0.0.tar.gz
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>cp velero-plugin-1.0.0/examples/cloud-credentials cloud-credentials
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>vi cloud-credentials
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">source</span> &lt;<span class="o">(</span>velero completion bash<span class="o">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>vi /etc/hosts
-</code></pre></div></p>
-<h3 id="validate-the-access-from-the-ansible-node">Validate the access from the Ansible node:<a class="headerlink" href="#validate-the-access-from-the-ansible-node" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>velero get backup-locations --kubeconfig kubeconfig
-</code></pre></div>
-<details class="success">
-<summary>Output</summary>
-<div class="highlight"><pre><span></span><code><span class="n">NAME</span><span class="w">      </span><span class="n">PROVIDER</span><span class="w">   </span><span class="n">BUCKET</span><span class="o">/</span><span class="n">PREFIX</span><span class="w">   </span><span class="n">PHASE</span><span class="w">       </span><span class="n">LAST</span><span class="w"> </span><span class="n">VALIDATED</span><span class="w">                  </span><span class="n">ACCESS</span><span class="w"> </span><span class="n">MODE</span><span class="w">   </span><span class="n">DEFAULT</span><span class="w"></span>
-<span class="k">default</span><span class="w">   </span><span class="n">aws</span><span class="w">        </span><span class="n">kmvbucket</span><span class="w">       </span><span class="n">Available</span><span class="w">   </span><span class="mi">2021-11-09</span><span class="w"> </span><span class="mi">12</span><span class="o">:</span><span class="mi">08</span><span class="o">:</span><span class="mi">44</span><span class="w"> </span><span class="o">+</span><span class="mo">0000</span><span class="w"> </span><span class="n">UTC</span><span class="w">   </span><span class="n">ReadWrite</span><span class="w">     </span><span class="nb">true</span><span class="w"></span>
-</code></pre></div>
-</details>
-<h1 id="backup-restore">Backup &amp; Restore: <span class="twemoji heart"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 12.45V9.64c1.47.83 3.61 1.36 6 1.36s4.53-.53 6-1.36v2.39c.17-.03.33-.03.5-.03.5 0 1 .07 1.5.18V7c0-2.21-3.58-4-8-4S4 4.79 4 7v10c0 2.21 3.59 4 8 4h.5c-.26-.63-.41-1.3-.47-2H12c-3.87 0-6-1.5-6-2v-2.23c1.61.78 3.72 1.23 6 1.23h.5c.35-.82.84-1.54 1.45-2.14-.63.09-1.28.14-1.95.14-2.42 0-4.7-.6-6-1.55M12 5c3.87 0 6 1.5 6 2s-2.13 2-6 2-6-1.5-6-2 2.13-2 6-2m6 13.5 1.77-1.77A2.5 2.5 0 1 0 20 20h1.71A3.991 3.991 0 0 1 18 22.5c-2.21 0-4-1.79-4-4s1.79-4 4-4c1.11 0 2.11.45 2.83 1.17L22 14.5v4h-4z"/></svg></span><a class="headerlink" href="#backup-restore" title="Permanent link">&para;</a></h1>
-<h2 id="backup">Backup:<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h2>
-<h3 id="creating-a-namespace-and-deployment-in-it">Creating a namespace and deployment in it.<a class="headerlink" href="#creating-a-namespace-and-deployment-in-it" title="Permanent link">&para;</a></h3>
-<h4 id="on-master01">On Master01:<a class="headerlink" href="#on-master01" title="Permanent link">&para;</a></h4>
-<p><div class="highlight"><pre><span></span><code>kubectl create ns testing
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>kubectl -n testing apply -f nginx.yaml <span class="c1">### Deploying 4 nginx pods</span>
-</code></pre></div></p>
-<h4 id="on-ansible-node">On Ansible node:<a class="headerlink" href="#on-ansible-node" title="Permanent link">&para;</a></h4>
-<p><div class="highlight"><pre><span></span><code>velero backup create firstbackup --include-namespaces testing --kubeconfig kubeconfig
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>velero get backup --kubeconfig kubeconfig
-</code></pre></div></p>
-<details class="success">
-<summary>output</summary>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="n">NAME</span><span class="w">           </span><span class="n">STATUS</span><span class="w">      </span><span class="n">ERRORS</span><span class="w">   </span><span class="n">WARNINGS</span><span class="w">   </span><span class="n">CREATED</span><span class="w">                         </span><span class="n">EXPIRES</span><span class="w">   </span><span class="n">STORAGE</span><span class="w"> </span><span class="n">LOCATION</span><span class="w">   </span><span class="n">SELECTOR</span><span class="w"></span>
-<span class="w"> </span><span class="n">firstbackup</span><span class="w">    </span><span class="n">Completed</span><span class="w">   </span><span class="mi">0</span><span class="w">        </span><span class="mi">0</span><span class="w">          </span><span class="mi">2021-11-09</span><span class="w"> </span><span class="mi">12</span><span class="o">:</span><span class="mi">11</span><span class="o">:</span><span class="mi">30</span><span class="w"> </span><span class="o">+</span><span class="mo">0000</span><span class="w"> </span><span class="n">UTC</span><span class="w">   </span><span class="mi">29</span><span class="n">d</span><span class="w">       </span><span class="k">default</span><span class="w">            </span><span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span><span class="w"></span>
-</code></pre></div>
-</details>
-<h2 id="restore">Restore:<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h2>
-<p>Deleting the Namespace Testing to perform restore</p>
-<h4 id="on-master01_1">On Master01:<a class="headerlink" href="#on-master01_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>kubectl delete namespace testing
-</code></pre></div>
-<h4 id="on-ansible-node_1">On Ansible node:<a class="headerlink" href="#on-ansible-node_1" title="Permanent link">&para;</a></h4>
-<p><div class="highlight"><pre><span></span><code>velero restore create firstbackup-restore --from-backup firstbackup --kubeconfig kubeconfig
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>velero get restores --kubeconfig kubeconfig
-</code></pre></div></p>
-<details class="success">
-<summary>Output</summary>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="n">NAME</span><span class="w">                  </span><span class="n">BACKUP</span><span class="w">        </span><span class="n">STATUS</span><span class="w">      </span><span class="n">STARTED</span><span class="w">                         </span><span class="n">COMPLETED</span><span class="w">                       </span><span class="n">ERRORS</span><span class="w">   </span><span class="n">WARNINGS</span><span class="w">   </span><span class="n">CREATED</span><span class="w">                         </span><span class="n">SELECTOR</span><span class="w"></span>
-<span class="w"> </span><span class="n">firstbackup</span><span class="o">-</span><span class="n">restore</span><span class="w">   </span><span class="n">firstbackup</span><span class="w">   </span><span class="n">Completed</span><span class="w">   </span><span class="mi">2021-11-08</span><span class="w"> </span><span class="mi">11</span><span class="o">:</span><span class="mi">20</span><span class="o">:</span><span class="mi">35</span><span class="w"> </span><span class="o">+</span><span class="mo">0000</span><span class="w"> </span><span class="n">UTC</span><span class="w">   </span><span class="mi">2021-11-08</span><span class="w"> </span><span class="mi">11</span><span class="o">:</span><span class="mi">20</span><span class="o">:</span><span class="mi">36</span><span class="w"> </span><span class="o">+</span><span class="mo">0000</span><span class="w"> </span><span class="n">UTC</span><span class="w">        </span><span class="mi">0</span><span class="w">        </span><span class="mi">0</span><span class="w">     </span><span class="mi">2021-11-08</span><span class="w"> </span><span class="mi">11</span><span class="o">:</span><span class="mi">20</span><span class="o">:</span><span class="mi">35</span><span class="w"> </span><span class="o">+</span><span class="mo">0000</span><span class="w"> </span><span class="n">UTC</span><span class="w">   </span><span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span><span class="w"></span>
-</code></pre></div>
-</details>
-<h4 id="on-master01_2">On Master01:<a class="headerlink" href="#on-master01_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>kubectl get deployments.apps -n testing
-</code></pre></div>
-<details class="success">
-<summary>Output</summary>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="n">NAME</span><span class="w">               </span><span class="n">READY</span><span class="w">   </span><span class="n">UP</span><span class="o">-</span><span class="n">TO</span><span class="o">-</span><span class="n">DATE</span><span class="w">   </span><span class="n">AVAILABLE</span><span class="w">   </span><span class="n">AGE</span><span class="w"></span>
-<span class="w"> </span><span class="n">nginx</span><span class="o">-</span><span class="n">deployment</span><span class="w">   </span><span class="mi">4</span><span class="o">/</span><span class="mi">4</span><span class="w">     </span><span class="mi">4</span><span class="w">            </span><span class="mi">4</span><span class="w">           </span><span class="mi">155</span><span class="n">m</span><span class="w"></span>
-</code></pre></div>
-</details>
-<h4 id="scheduling-backup">Scheduling backup:<a class="headerlink" href="#scheduling-backup" title="Permanent link">&para;</a></h4>
-<p><div class="highlight"><pre><span></span><code>velero create schedule initbackup1 --schedule<span class="o">=</span><span class="s2">&quot;13 12 * * *&quot;</span> --kubeconfig kubeconfig --include-namespaces testing
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>velero get schedules --kubeconfig kubeconfig
+<div class="highlight"><pre><span></span><code>apt-get install haproxy
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Velero commands can also be executed from the Master node.</p>
+<p>Add below lines in the haproxy configuration file and restart the service.
+Carefully update the hostnames and IPs to avoid the conflicts.
+If the DNS server is configured, the Load Balancer name can be defined.</p>
+</div>
+<p><div class="highlight"><pre><span></span><code>vim /etc/haproxy/haproxy.cfg
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">frontend</span><span class="w"> </span><span class="n">kubernetes</span><span class="w"></span>
+<span class="n">bind</span><span class="w"> </span><span class="nl">LoadBalancerIP</span><span class="p">:</span><span class="mi">6443</span><span class="w"></span>
+<span class="n">option</span><span class="w"> </span><span class="n">tcplog</span><span class="w"></span>
+<span class="n">mode</span><span class="w"> </span><span class="n">tcp</span><span class="w"></span>
+<span class="n">default_backend</span><span class="w"> </span><span class="n">kubernetes</span><span class="o">-</span><span class="n">master</span><span class="o">-</span><span class="n">nodes</span><span class="w"></span>
+
+<span class="n">backend</span><span class="w"> </span><span class="n">kubernetes</span><span class="o">-</span><span class="n">master</span><span class="o">-</span><span class="n">nodes</span><span class="w"></span>
+<span class="n">mode</span><span class="w"> </span><span class="n">tcp</span><span class="w"></span>
+<span class="n">balance</span><span class="w"> </span><span class="n">roundrobin</span><span class="w"></span>
+<span class="n">option</span><span class="w"> </span><span class="n">tcp</span><span class="o">-</span><span class="n">check</span><span class="w"></span>
+<span class="n">server</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Master01</span><span class="w"> </span><span class="n">Name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Master01</span><span class="w"> </span><span class="n">IP</span><span class="o">&gt;:</span><span class="mi">6443</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="n">fall</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">rise</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="n">server</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Master02</span><span class="w"> </span><span class="n">Name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Master02</span><span class="w"> </span><span class="n">IP</span><span class="o">&gt;:</span><span class="mi">6443</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="n">fall</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">rise</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="n">server</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Master03</span><span class="w"> </span><span class="n">Name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Master03</span><span class="w"> </span><span class="n">IP</span><span class="o">&gt;:</span><span class="mi">6443</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="n">fall</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">rise</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>systemctl restart haproxy
+</code></pre></div></p>
+<h2 id="installing-the-client-tools-on-the-bastion-host">Installing the client tools on the Bastion Host<a class="headerlink" href="#installing-the-client-tools-on-the-bastion-host" title="Permanent link">&para;</a></h2>
+<h3 id="installing-cfssl">Installing cfssl:<a class="headerlink" href="#installing-cfssl" title="Permanent link">&para;</a></h3>
+<p>Download the binaries and add the execution permission to the binaries.</p>
+<p><div class="highlight"><pre><span></span><code>apt-get update
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>chmod +x cfssl*
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>mv cfssl_linux-amd64 /usr/local/bin/cfssl
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>mv cfssljson_linux-amd64 /usr/local/bin/cfssljson
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cfssl version
+</code></pre></div></p>
+<h3 id="installing-kubectl">Installing kubectl:<a class="headerlink" href="#installing-kubectl" title="Permanent link">&para;</a></h3>
+<p>Download the kubectl binaries, add the execution permission to the binaries.</p>
+<p><div class="highlight"><pre><span></span><code>wget https://storage.googleapis.com/kubernetes-release/release/v1.12.1/bin/linux/amd64/kubectl
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>chmod +x kubectl
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo mv kubectl /usr/local/bin
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>kubectl version
+</code></pre></div></p>
+<h2 id="generating-the-tls-certificates">Generating the TLS certificates<a class="headerlink" href="#generating-the-tls-certificates" title="Permanent link">&para;</a></h2>
+<h3 id="creating-a-certificate-authority">Creating a certificate authority:<a class="headerlink" href="#creating-a-certificate-authority" title="Permanent link">&para;</a></h3>
+<p>Create the certificate authority and certificate authority signing request configuration file.
+<div class="highlight"><pre><span></span><code>vim ca-config.json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;signing&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;default&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;expiry&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;8760h&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;profiles&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;kubernetes&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;usages&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;signing&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;key encipherment&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;server auth&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;client auth&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;expiry&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;8760h&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>vim ca-csr.json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;CN&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Kubernetes&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;algo&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;rsa&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;size&quot;</span><span class="o">:</span><span class="w"> </span><span class="mi">2048</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;names&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;C&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;IE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;L&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Cork&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;O&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Kubernetes&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;OU&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;CA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;ST&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Cork Co.&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+Generate the certificate authority certificate and private key.</p>
+<p><div class="highlight"><pre><span></span><code>cfssl gencert -initca ca-csr.json <span class="p">|</span> cfssljson -bare ca
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ls -la
+</code></pre></div></p>
+<h2 id="creating-the-certificate-for-the-etcd-cluster">Creating the certificate for the Etcd cluster:<a class="headerlink" href="#creating-the-certificate-for-the-etcd-cluster" title="Permanent link">&para;</a></h2>
+<p>Create the certificate signing request configuration file.</p>
+<p><div class="highlight"><pre><span></span><code>vim kubernetes-csr.json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;CN&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;kubernetes&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;key&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;algo&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;rsa&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;size&quot;</span><span class="o">:</span><span class="w"> </span><span class="mi">2048</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;names&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;C&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;IE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;L&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Cork&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;O&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Kubernetes&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;OU&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Kubernetes&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;ST&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Cork Co.&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+Generate the certificate and private key:</p>
+<div class="highlight"><pre><span></span><code>cfssl gencert <span class="se">\</span>
+-ca<span class="o">=</span>ca.pem <span class="se">\</span>
+-ca-key<span class="o">=</span>ca-key.pem <span class="se">\</span>
+-config<span class="o">=</span>ca-config.json <span class="se">\</span>
+-hostname<span class="o">=</span>&lt;Master01_IP&gt;,&lt;Master02_IP&gt;,&lt;Master03_IP&gt;,&lt;LoadBalncer_IP&gt;,127.0.0.1,kubernetes.default <span class="se">\</span>
+-profile<span class="o">=</span>kubernetes kubernetes-csr.json <span class="p">|</span> <span class="se">\</span>
+cfssljson -bare kubernetes
+</code></pre></div>
+<p>!!! "Copy the certificate to the both Master and Worker node:"
+     sudo scp ca.pem kubernetes.pem kubernetes-key.pem opsadmin@<Master01_IP>:~
+     sudo scp ca.pem kubernetes.pem kubernetes-key.pem opsadmin@<Master02_IP>:~
+     sudo scp ca.pem kubernetes.pem kubernetes-key.pem opsadmin@<Master03_IP>:~
+     sudo scp ca.pem kubernetes.pem kubernetes-key.pem opsadmin@<Worker01_IP>:~
+     sudo scp ca.pem kubernetes.pem kubernetes-key.pem opsadmin@<Worker02_IP>:~
+     sudo scp ca.pem kubernetes.pem kubernetes-key.pem opsadmin@<worker03_IP>:~</p>
+<h2 id="preparing-the-master-and-worker-nodes-for-kubeadm">Preparing the Master and Worker nodes for kubeadm<a class="headerlink" href="#preparing-the-master-and-worker-nodes-for-kubeadm" title="Permanent link">&para;</a></h2>
+<h3 id="installing-docker">Installing Docker:<a class="headerlink" href="#installing-docker" title="Permanent link">&para;</a></h3>
+<p>Add the Docker repository key and Docker repository.
+<div class="highlight"><pre><span></span><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> apt-key add -
+add-apt-repository <span class="se">\</span>
+<span class="s2">&quot;deb https://download.docker.com/linux/</span><span class="k">$(</span>. /etc/os-release<span class="p">;</span> <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2"> \</span>
+<span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> \</span>
+<span class="s2">stable&quot;</span>
+</code></pre></div>
+Update the list of packages and install the docker</p>
+<p><div class="highlight"><pre><span></span><code>apt-get update
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>apt-get install -y docker-ce
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s1">&#39;{&quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;]}&#39;</span> <span class="p">|</span> sudo tee /etc/docker/daemon.json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>systemctl daemon-reload
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>systemctl restart docker
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>systemctl <span class="nb">enable</span> docker
+</code></pre></div></p>
+<h3 id="installing-kubeadm-kublet-and-kubectl">Installing kubeadm, kublet, and kubectl:<a class="headerlink" href="#installing-kubeadm-kublet-and-kubectl" title="Permanent link">&para;</a></h3>
+<p>Add the Google repository key and Google repository</p>
+<p><div class="highlight"><pre><span></span><code>curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg <span class="p">|</span> apt-key add -
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>vim /etc/apt/sources.list.d/kubernetes.list
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>deb http://apt.kubernetes.io kubernetes-xenial main
+</code></pre></div>
+Update the list of packages. And install kubelet, kubeadm and kubectl.</p>
+<p><div class="highlight"><pre><span></span><code>apt-get update 
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>apt-get install kubelet kubeadm kubectl -y
+</code></pre></div>
+Disable the swap.</p>
+<p><div class="highlight"><pre><span></span><code>swapoff -a
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sed -i <span class="s1">&#39;/ swap / s/^/#/&#39;</span> /etc/fstab
+</code></pre></div></p>
+<h3 id="installing-and-configuring-etcd-on-the-master-nodes">Installing and configuring Etcd on the Master Nodes.<a class="headerlink" href="#installing-and-configuring-etcd-on-the-master-nodes" title="Permanent link">&para;</a></h3>
+<p>Create a configuration directory for Etcd and move the certificates into it.
+<div class="highlight"><pre><span></span><code>sudo mkdir /etc/etcd /var/lib/etcd
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo mv ~/ca.pem ~/kubernetes.pem ~/kubernetes-key.pem /etc/etcd
+</code></pre></div>
+Download and extract the etcd archive and move it to /usr/local/bin.</p>
+<p><div class="highlight"><pre><span></span><code>wget https://github.com/coreos/etcd/releases/download/v3.3.9/etcd-v3.3.9-linux-amd64.tar.gz
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>tar xvzf etcd-v3.3.9-linux-amd64.tar.gz
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo mv etcd-v3.3.9-linux-amd64/etcd* /usr/local/bin/
+</code></pre></div>
+Create an etcd systemd unit file.</p>
+<p><div class="highlight"><pre><span></span><code>sudo vim /etc/systemd/system/etcd.service
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">Unit</span><span class="p">]</span><span class="w"></span>
+<span class="n">Description</span><span class="o">=</span><span class="n">etcd</span><span class="w"></span>
+<span class="n">Documentation</span><span class="o">=</span><span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/coreos</span>
+
+<span class="p">[</span><span class="n">Service</span><span class="p">]</span><span class="w"></span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">etcd</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">name</span><span class="w"> </span><span class="o">&lt;</span><span class="n">host_IP</span><span class="o">&gt;</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">cert</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">etcd</span><span class="o">/</span><span class="n">kubernetes</span><span class="p">.</span><span class="n">pem</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">key</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">etcd</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">key</span><span class="p">.</span><span class="n">pem</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">peer</span><span class="o">-</span><span class="n">cert</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">etcd</span><span class="o">/</span><span class="n">kubernetes</span><span class="p">.</span><span class="n">pem</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">peer</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">etcd</span><span class="o">/</span><span class="n">kubernetes</span><span class="o">-</span><span class="n">key</span><span class="p">.</span><span class="n">pem</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">trusted</span><span class="o">-</span><span class="n">ca</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">etcd</span><span class="o">/</span><span class="n">ca</span><span class="p">.</span><span class="n">pem</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">peer</span><span class="o">-</span><span class="n">trusted</span><span class="o">-</span><span class="n">ca</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">etcd</span><span class="o">/</span><span class="n">ca</span><span class="p">.</span><span class="n">pem</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">peer</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">cert</span><span class="o">-</span><span class="n">auth</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">client</span><span class="o">-</span><span class="n">cert</span><span class="o">-</span><span class="n">auth</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">initial</span><span class="o">-</span><span class="n">advertise</span><span class="o">-</span><span class="n">peer</span><span class="o">-</span><span class="n">urls</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="c1">//&lt;host_IP&gt;:2380 \</span>
+<span class="c1">  --listen-peer-urls https://&lt;host_IP&gt;:2380 \</span>
+<span class="c1">  --listen-client-urls https://&lt;host_IP&gt;:2379,http://127.0.0.1:2379 \</span>
+<span class="c1">  --advertise-client-urls https://&lt;host_IP&gt;:2379 \</span>
+<span class="c1">  --initial-cluster-token etcd-cluster-0 \</span>
+<span class="c1">  --initial-cluster &lt;Master01_IP&gt;=https://&lt;Master01_IP&gt;:2380,&lt;Master02_IP&gt;=https://&lt;Master02_IP&gt;:2380,&lt;Master03_IP&gt;=https://&lt;Master03_IP&gt;:2380 \</span>
+<span class="c1">  --initial-cluster-state new \</span>
+<span class="c1">  --data-dir=/var/lib/etcd</span>
+<span class="n">Restart</span><span class="o">=</span><span class="n">on</span><span class="o">-</span><span class="n">failure</span><span class="w"></span>
+<span class="n">RestartSec</span><span class="o">=</span><span class="mi">5</span><span class="w"></span>
+<span class="p">[</span><span class="n">Install</span><span class="p">]</span><span class="w"></span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="n">user</span><span class="p">.</span><span class="n">target</span><span class="w"></span>
+</code></pre></div>
+Reload the daemon configuration, Enable and start the etcd.</p>
+<p><div class="highlight"><pre><span></span><code>sudo systemctl daemon-reload
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> etcd
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo systemctl start etcd
+</code></pre></div>
+Verify that the cluster is up and running.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span> etcdctl member list
+</code></pre></div>
+<h2 id="initializing-the-master-nodes">Initializing the master nodes<a class="headerlink" href="#initializing-the-master-nodes" title="Permanent link">&para;</a></h2>
+<h3 id="initializing-the-master01-node">Initializing the master01 node:<a class="headerlink" href="#initializing-the-master01-node" title="Permanent link">&para;</a></h3>
+<p>Create the configuration file for kubeadm.
+<div class="highlight"><pre><span></span><code>vim config.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo kubeadm init --config<span class="o">=</span>config.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo scp -r /etc/kubernetes/pki opsadmin@&lt;Master02_IP&gt;:~
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo scp -r /etc/kubernetes/pki opsadmin@&lt;Master03_IP&gt;:~
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo scp -r config.yaml opsadmin@&lt;Master03_IP&gt;:~
+</code></pre></div></p>
+<h2 id="configure-master02-and-03">Configure Master02 and 03<a class="headerlink" href="#configure-master02-and-03" title="Permanent link">&para;</a></h2>
+<p>Remove the apiserver.crt and apiserver.key.</p>
+<p><div class="highlight"><pre><span></span><code>rm ~/pki/apiserver.*
+</code></pre></div>
+Move the certificates to the /etc/kubernetes directory.</p>
+<p><div class="highlight"><pre><span></span><code>sudo mv ~/pki /etc/kubernetes/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sudo kubeadm init --config<span class="o">=</span>config.yaml
+</code></pre></div></p>
+<h3 id="initializing-the-worker-nodes">Initializing the worker nodes<a class="headerlink" href="#initializing-the-worker-nodes" title="Permanent link">&para;</a></h3>
+<p>Copy the "kubeadm join" command from the lastly created master node and execute on the worker nodes.</p>
+<p><div class="highlight"><pre><span></span><code>sudo kubeadm join <span class="m">10</span>.10.40.93:6443 --token <span class="o">[</span>your_token<span class="o">]</span> --discovery-token-ca-cert-hash sha256:<span class="o">[</span>your_token_ca_cert_hash<span class="o">]</span>
+</code></pre></div>
+Configuring kubectl on the client machine</p>
+<p><div class="highlight"><pre><span></span><code>sudo chmod +r /etc/kubernetes/admin.conf
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>scp opsadmin@&lt;Master01_IP&gt;:/etc/kubernetes/admin.conf .
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>mkdir ~/.kube
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>mv admin.conf ~/.kube/config
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>chmod <span class="m">600</span> ~/.kube/config
+</code></pre></div>
+Deploying the Calico as overlay network</p>
+<p><div class="highlight"><pre><span></span><code>kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yamlwatch kubectl get pods -n calico-system
+</code></pre></div>
+Validate nodes are in Ready state.</p>
+<div class="highlight"><pre><span></span><code>kubectl get nodes
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">References:</p>
+<p><a href="https://blog.inkubate.io/install-and-configure-a-multi-master-kubernetes-cluster-with-kubeadm/">https://blog.inkubate.io/install-and-configure-a-multi-master-kubernetes-cluster-with-kubeadm/</a></p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Analysis:</p>
+<p>Config file error 
+This version of kubeadm only supports deploying clusters with the control plane version &gt;= 1.16.0. Current version: v1.12.0 Kubernetes</p>
+<p><a href="https://stackoverflow.com/questions/61926846/this-version-of-kubeadm-only-supports-deploying-clusters-with-the-control-plane">https://stackoverflow.com/questions/61926846/this-version-of-kubeadm-only-supports-deploying-clusters-with-the-control-plane</a></p>
+<p><a href="https://pkg.go.dev/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2">https://pkg.go.dev/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2</a></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Error</p>
+<p>[kubelet-check] It seems like the kubelet isn't running or healthy.
+[kubelet-check] The HTTP call equal to 'curl -sSL <a href="http://localhost:10248/healthz">http://localhost:10248/healthz</a>' failed with error: Get <a href="http://localhost:10248/healthz">http://localhost:10248/healthz</a>: dial tcp 127.0.0.1:10248: connect: connection refused.</p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Solution: Updating the /etc/docker/daemon.json file</p>
+<p><a href="https://www.myfreax.com/how-to-solve-dial-tcp-127-0-0-1-10248-connect-connection-refused-during-kubeadm-init-initialization/">https://www.myfreax.com/how-to-solve-dial-tcp-127-0-0-1-10248-connect-connection-refused-during-kubeadm-init-initialization/</a></p>
+<p>Disable swap on all the master and worker nodes.
+Carefully give the hostnames and IPs while configuring configuration files, generating ETCD certificates, hosts and hostname file, HA proxy config file.
+DNS server entry in the resolv.conf and /etc/resolvconf/resolv.conf.d/head.
+kubernetes node not ready but pod running.
+Due to wrong hostname given in HA config file and on the node</p>
+<p><a href="https://stackoverflow.com/questions/47107117/how-to-debug-when-kubernetes-nodes-are-in-not-ready-state">https://stackoverflow.com/questions/47107117/how-to-debug-when-kubernetes-nodes-are-in-not-ready-state</a></p>
+<p><a href="https://stackoverflow.com/questions/49112336/container-runtime-network-not-ready-cni-config-uninitialized">https://stackoverflow.com/questions/49112336/container-runtime-network-not-ready-cni-config-uninitialized</a></p>
+<p><a href="https://github.com/kubernetes/kubernetes/issues/96459">https://github.com/kubernetes/kubernetes/issues/96459</a></p>
 </div>
 
               
@@ -1498,7 +1753,7 @@ Configure Velero on the Ansible Node to access it from out of the cluster:
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../k8s_monitoring/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Monitoring" rel="prev">
+        <a href="../kubespray/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Kube Spray" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1507,20 +1762,20 @@ Configure Velero on the Ansible Node to access it from out of the cluster:
               <span class="md-footer__direction">
                 Previous
               </span>
-              Monitoring
+              Kube Spray
             </div>
           </div>
         </a>
       
       
         
-        <a href="../nginx-ingress/" class="md-footer__link md-footer__link--next" aria-label="Next: Nginx" rel="next">
+        <a href="../k0s/" class="md-footer__link md-footer__link--next" aria-label="Next: K0s" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Nginx
+              K0s
             </div>
           </div>
           <div class="md-footer__button md-icon">

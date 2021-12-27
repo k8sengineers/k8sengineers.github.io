@@ -17,7 +17,7 @@
     
     
       
-        <title>Setupv1 - K8s Engineers</title>
+        <title>Nginx - K8s Engineers</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup" class="md-skip">
+        <a href="#installation-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Setupv1
+              Nginx
             
           </span>
         </div>
@@ -229,13 +229,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../k8s_monitoring/" class="md-tabs__link">
+      <a href="../k8s_monitoring/" class="md-tabs__link md-tabs__link--active">
         K8s Tooling
       </a>
     </li>
@@ -487,12 +489,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -561,14 +565,16 @@
               
   
   
+    
+  
   
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" checked>
       
       
       
@@ -597,11 +603,79 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../nginx-ingress/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Nginx
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Nginx
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    Quick start
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-flight-check" class="md-nav__link">
+    Pre-flight check
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-testing" class="md-nav__link">
+    Local testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#online-testing" class="md-nav__link">
+    Online testing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1074,107 +1148,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configure-the-host-file-with-the-hostname-and-ips" class="md-nav__link">
-    Configure the host file with the hostname and IPs.
+  <a href="#quick-start" class="md-nav__link">
+    Quick start
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-coredns-from-the-website-unpack-the-binary-to-usrlocalbin-and-make-it-executable" class="md-nav__link">
-    Download CoreDNS from the website, unpack the binary to /usr/local/bin and make it executable.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#install-resolvconf-as-a-tool-to-manually-manage-etcresolvconf" class="md-nav__link">
-    Install resolvconf as a tool to manually manage /etc/resolv.conf.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#set-dns-as-default-in-etcnetworkmanagernetworkmanagerconf" class="md-nav__link">
-    Set dns as default in /etc/NetworkManager/NetworkManager.conf.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-nameserver-127001-to-etcresolvconfresolvconfdhead" class="md-nav__link">
-    Add nameserver 127.0.0.1 to /etc/resolvconf/resolv.conf.d/head.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-etccorednscorefile-and-paste-the-configuration-shown-below" class="md-nav__link">
-    Create /etc/coredns/Corefile and paste the configuration shown below.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#we-are-using-cloudflare-as-a-dns-provider1111" class="md-nav__link">
-    We are using Cloudflare as a DNS provider(1.1.1.1).
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-a-new-user-for-coredns-and-set-some-permissions-on-the-optcoredns-directory" class="md-nav__link">
-    Create a new user for CoreDNS and set some permissions on the /opt/coredns directory.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-the-systemd-service-unit-file-from-coredns-to-etcsystemdsystemcorednsservice" class="md-nav__link">
-    Download the SystemD service unit file from coredns to /etc/systemd/system/coredns.service.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disable-systemds-default-dns-server" class="md-nav__link">
-    Disable SystemD's default DNS server.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enable-and-start-coredns" class="md-nav__link">
-    Enable and start CoreDNS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#now-we-can-able-to-resolve-domain-names-again-eg-try-to-dig-short-kitedu-if-an-ip-address-is-printed-everything-works-fine" class="md-nav__link">
-    Now we can able to resolve domain names, again. E.g. try to dig +short kit.edu. If an IP address is printed, everything works fine.
-  </a>
-  
-    <nav class="md-nav" aria-label="Now we can able to resolve domain names, again. E.g. try to dig +short kit.edu. If an IP address is printed, everything works fine.">
+    <nav class="md-nav" aria-label="Quick start">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#output" class="md-nav__link">
-    Output
+  <a href="#pre-flight-check" class="md-nav__link">
+    Pre-flight check
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#output_1" class="md-nav__link">
-    Output
+  <a href="#local-testing" class="md-nav__link">
+    Local testing
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#output_2" class="md-nav__link">
-    Output
+  <a href="#online-testing" class="md-nav__link">
+    Online testing
   </a>
   
 </li>
@@ -1197,108 +1194,74 @@
               
                 
 
-<h1 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h1>
-<h3 id="configure-the-host-file-with-the-hostname-and-ips">Configure the host file with the hostname and IPs.<a class="headerlink" href="#configure-the-host-file-with-the-hostname-and-ips" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>cat /etc/hosts
+<h1 id="installation-guide">Installation Guide<a class="headerlink" href="#installation-guide" title="Permanent link">&para;</a></h1>
+<p>There are multiple ways to install the NGINX ingress controller:
+- with <a href="https://helm.sh">Helm</a>, using the project repository chart;
+- with <code>kubectl apply</code>, using YAML manifests;</p>
+<p>On most Kubernetes clusters, the ingress controller will work without requiring any extra configuration. If you want to get started as fast as possible, you can check the <a href="#quick-start">quick start</a> instructions. However, in many environments, you can improve the performance or get better logs by enabling extra features. we recommend that you check the <a href="#environment-specific-instructions">environment-specific instructions</a> for details about optimizing the ingress controller for your particular environment or cloud provider.</p>
+<h2 id="quick-start">Quick start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<p>You can deploy the ingress controller with the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="go">helm upgrade --install ingress-nginx ingress-nginx \</span>
+<span class="go">  --repo https://kubernetes.github.io/ingress-nginx \</span>
+<span class="go">  --namespace ingress-nginx --create-namespace</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="mf">192.168.0.100</span><span class="w"> </span><span class="n">dnsserver</span><span class="p">.</span><span class="n">cruise</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="mf">192.168.135.21</span><span class="w"> </span><span class="n">test01</span><span class="p">.</span><span class="n">cruise</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="mf">192.168.0.100</span><span class="w"> </span><span class="n">dnsserver</span><span class="w"></span>
-<span class="mf">127.0.0.1</span><span class="w"> </span><span class="n">localhost</span><span class="w"></span>
-</code></pre></div>
-<h3 id="download-coredns-from-the-website-unpack-the-binary-to-usrlocalbin-and-make-it-executable">Download CoreDNS from the website, unpack the binary to <mark>/usr/local/bin</mark> and make it executable.<a class="headerlink" href="#download-coredns-from-the-website-unpack-the-binary-to-usrlocalbin-and-make-it-executable" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>wget https://github.com/coredns/coredns/releases/download/v1.8.6/coredns_1.8.6_linux_amd64.tgz  
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>tar -xvzf coredns_1.8.6_linux_amd64.tgz
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>cp coredns /usr/local/bin/
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo chmod +x /usr/local/bin/coredns
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>ll /usr/local/bin/coredns
-</code></pre></div></p>
-<h3 id="install-resolvconf-as-a-tool-to-manually-manage-etcresolvconf">Install resolvconf as a tool to manually manage <mark>/etc/resolv.conf</mark>.<a class="headerlink" href="#install-resolvconf-as-a-tool-to-manually-manage-etcresolvconf" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>apt install resolvconf
-</code></pre></div>
-<h3 id="set-dns-as-default-in-etcnetworkmanagernetworkmanagerconf">Set dns as default in <mark>/etc/NetworkManager/NetworkManager.conf</mark>.<a class="headerlink" href="#set-dns-as-default-in-etcnetworkmanagernetworkmanagerconf" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>vi /etc/NetworkManager/NetworkManager.conf
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>dns=default
-</code></pre></div></p>
-<h3 id="add-nameserver-127001-to-etcresolvconfresolvconfdhead">Add nameserver 127.0.0.1 to <mark>/etc/resolvconf/resolv.conf.d/head</mark>.<a class="headerlink" href="#add-nameserver-127001-to-etcresolvconfresolvconfdhead" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>vi /etc/resolvconf/resolv.conf.d/head
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>nameserver 127.0.0.1
-</code></pre></div></p>
-<h3 id="create-etccorednscorefile-and-paste-the-configuration-shown-below">Create <mark>/etc/coredns/Corefile</mark> and paste the configuration shown below.<a class="headerlink" href="#create-etccorednscorefile-and-paste-the-configuration-shown-below" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>vi /etc/coredns/Corefile
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>groophy.org:53 {
-        forward . tls://2606:4700:4700::1111 tls://1.1.1.1
-        hosts /etc/hosts
-log
-        errors
-        Cache
-}
-.:53 {
-        forward . tls://2606:4700:4700::1111 tls://1.1.1.1
-        log
-        errors
-        Cache
-}
-</code></pre></div></p>
-<h3 id="we-are-using-cloudflare-as-a-dns-provider1111">We are using Cloudflare as a DNS provider(1.1.1.1).<a class="headerlink" href="#we-are-using-cloudflare-as-a-dns-provider1111" title="Permanent link">&para;</a></h3>
-<h3 id="create-a-new-user-for-coredns-and-set-some-permissions-on-the-optcoredns-directory">Create a new user for CoreDNS and set some permissions on the <mark>/opt/coredns</mark> directory.<a class="headerlink" href="#create-a-new-user-for-coredns-and-set-some-permissions-on-the-optcoredns-directory" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>sudo useradd -d /var/lib/coredns -m coredns
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo chown coredns:coredns /opt/coredns
-</code></pre></div></p>
-<h3 id="download-the-systemd-service-unit-file-from-coredns-to-etcsystemdsystemcorednsservice">Download the SystemD service unit file from coredns to <mark>/etc/systemd/system/coredns.service</mark>.<a class="headerlink" href="#download-the-systemd-service-unit-file-from-coredns-to-etcsystemdsystemcorednsservice" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>wget https://github.com/coredns/deployment/blob/master/systemd/coredns.service   
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>mv coredns.service /etc/systemd/system/
-</code></pre></div></p>
-<h3 id="disable-systemds-default-dns-server">Disable SystemD's default DNS server.<a class="headerlink" href="#disable-systemds-default-dns-server" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>sudo systemctl stop systemd-resolved <span class="o">&amp;&amp;</span> sudo systemctl disable systemd-resolved
-</code></pre></div>
-<details class="note" open="open">
-<summary>Note</summary>
-<p>From that moment on, you will not be able to resolve any web pages anymore, unless you enable DNS again</p>
-</details>
-<h3 id="enable-and-start-coredns">Enable and start CoreDNS<a class="headerlink" href="#enable-and-start-coredns" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> coredns <span class="o">&amp;&amp;</span> sudo systemctl start coredns
-</code></pre></div>
-<h3 id="now-we-can-able-to-resolve-domain-names-again-eg-try-to-dig-short-kitedu-if-an-ip-address-is-printed-everything-works-fine">Now we can able to resolve domain names, again. E.g. try to <mark>dig +short kit.edu</mark>. If an IP address is printed, everything works fine.<a class="headerlink" href="#now-we-can-able-to-resolve-domain-names-again-eg-try-to-dig-short-kitedu-if-an-ip-address-is-printed-everything-works-fine" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>dig +short kit.edu
-</code></pre></div>
-<h4 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h4>
-<p><div class="highlight"><pre><span></span><code><span class="mf">141.3.128.6</span><span class="w"></span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>nslookup dnsserver.groophy.org
-</code></pre></div></p>
-<h4 id="output_1">Output<a class="headerlink" href="#output_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nl">Server</span><span class="p">:</span><span class="w">         </span><span class="mf">192.168.0.100</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w">        </span><span class="mf">192.168.0.100</span><span class="err">#</span><span class="mi">53</span><span class="w"></span>
-
-<span class="nl">Name</span><span class="p">:</span><span class="w">   </span><span class="n">dnsserver</span><span class="p">.</span><span class="n">cruise</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w"> </span><span class="mf">192.168.0.100</span><span class="w"></span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>nslookup google.com
-</code></pre></div>
-<h4 id="output_2">Output<a class="headerlink" href="#output_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nl">Server</span><span class="p">:</span><span class="w">         </span><span class="mf">192.168.0.100</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w">        </span><span class="mf">192.168.0.100</span><span class="err">#</span><span class="mi">53</span><span class="w"></span>
-
-<span class="n">Non</span><span class="o">-</span><span class="n">authoritative</span><span class="w"> </span><span class="nl">answer</span><span class="p">:</span><span class="w"></span>
-<span class="nl">Name</span><span class="p">:</span><span class="w">   </span><span class="n">google</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w"> </span><span class="mf">142.250.71.14</span><span class="w"></span>
-<span class="nl">Name</span><span class="p">:</span><span class="w">   </span><span class="n">google</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w"> </span><span class="mi">2404</span><span class="o">:</span><span class="mi">6800</span><span class="o">:</span><span class="mi">4007</span><span class="o">:</span><span class="mi">824</span><span class="o">::</span><span class="mi">200</span><span class="n">e</span><span class="w"></span>
+<p>It will install the controller in the <code>ingress-nginx</code> namespace, creating that namespace if it doesn't already exist.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This command is <em>idempotent</em>:
+- if the ingress controller is not installed, it will install it,
+- if the ingress controller is already installed, it will upgrade it.</p>
+</div>
+<p>This requires Helm version 3. If you prefer to use a YAML manifest, you can run the following command instead:</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Before running the command at your terminal, make sure Kubernetes is enabled at Docker settings</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="go">kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml</span>
 </code></pre></div>
 <div class="admonition info">
-<p class="admonition-title">Conclusion</p>
-<p>Able to resolve both internal servers and outside the world.</p>
+<p class="admonition-title">Info</p>
+<p>The YAML manifest in the command above was generated with <code>helm template</code>, so you will end up with almost the same resources as if you had used Helm to install the controller.</p>
 </div>
+<p>If you are running an old version of Kubernetes (1.18 or earlier), please read
+<a href="#running-on-Kubernetes-versions-older-than-1.19">this paragraph</a> for specific instructions.</p>
+<h3 id="pre-flight-check">Pre-flight check<a class="headerlink" href="#pre-flight-check" title="Permanent link">&para;</a></h3>
+<p>A few pods should start in the <code>ingress-nginx</code> namespace:</p>
+<div class="highlight"><pre><span></span><code><span class="go">kubectl get pods --namespace=ingress-nginx</span>
+</code></pre></div>
+<p>After a while, they should all be running. The following command will wait for the ingress controller pod to be up, running, and ready:</p>
+<div class="highlight"><pre><span></span><code><span class="go">kubectl wait --namespace ingress-nginx \</span>
+<span class="go">  --for=condition=ready pod \</span>
+<span class="go">  --selector=app.kubernetes.io/component=controller \</span>
+<span class="go">  --timeout=120s</span>
+</code></pre></div>
+<h3 id="local-testing">Local testing<a class="headerlink" href="#local-testing" title="Permanent link">&para;</a></h3>
+<p>Let's create a simple web server and the associated service:</p>
+<div class="highlight"><pre><span></span><code><span class="go">kubectl create deployment demo --image=httpd --port=80</span>
+<span class="go">kubectl expose deployment demo</span>
+</code></pre></div>
+<p>Then create an ingress resource. The following example uses an host that maps to <code>localhost</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="go">kubectl create ingress demo-localhost --class=nginx \</span>
+<span class="go">  --rule=demo.localdev.me/*=demo:80</span>
+</code></pre></div>
+<p>Now, forward a local port to the ingress controller:</p>
+<div class="highlight"><pre><span></span><code><span class="go">kubectl port-forward --namespace=ingress-nginx service/ingress-nginx-controller 8080:80</span>
+</code></pre></div>
+<p>At this point, if you access <a href="http://demo.localdev.me:8080/">http://demo.localdev.me:8080/</a>, you should see an HTML page telling you "It works!".</p>
+<h3 id="online-testing">Online testing<a class="headerlink" href="#online-testing" title="Permanent link">&para;</a></h3>
+<p>If your Kubernetes cluster is a "real" cluster that supports services of type <code>LoadBalancer</code>, it will have allocated an external IP address or FQDN to the ingress controller.</p>
+<p>You can see that IP address or FQDN with the following command:</p>
+<div class="highlight"><pre><span></span><code><span class="go">kubectl get service ingress-nginx-controller --namespace=ingress-nginx</span>
+</code></pre></div>
+<p>Set up a DNS record pointing to that IP address or FQDN; then create an ingress resource. The following example assumes that you have set up a DNS record for <code>www.demo.io</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="go">kubectl create ingress demo --class=nginx \</span>
+<span class="go">  --rule=&quot;www.demo.io/*=demo:80&quot;</span>
+</code></pre></div>
+<p>Alternatively, the above command can be rewritten as follows for the <code>--rule</code> command and below.
+<div class="highlight"><pre><span></span><code><span class="go">kubectl create ingress demo --class=nginx \</span>
+<span class="go">  --rule www.demo.io/=demo:80</span>
+</code></pre></div></p>
+<p>You should then be able to see the "It works!" page when you connect to <a href="http://www.demo.io/">http://www.demo.io/</a>. Congratulations, you are serving a public web site hosted on a Kubernetes cluster! 🎉</p>
 
               
             </article>
@@ -1313,6 +1276,41 @@ log
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../k8s_backup_restore/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Kubernetes Setup With Backup and Restore Solution" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Kubernetes Setup With Backup and Restore Solution
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../metalLB/" class="md-footer__link md-footer__link--next" aria-label="Next: Metal LB" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Metal LB
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

@@ -17,7 +17,7 @@
     
     
       
-        <title>Setupv1 - K8s Engineers</title>
+        <title>Testing2 - K8s Engineers</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup" class="md-skip">
+        <a href="#share-the-ssh-public-key-of-the-bastion-host-to-the-rest-of-the-server-for-transferring-the-certificates" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Setupv1
+              Testing2
             
           </span>
         </div>
@@ -1067,125 +1067,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#configure-the-host-file-with-the-hostname-and-ips" class="md-nav__link">
-    Configure the host file with the hostname and IPs.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-coredns-from-the-website-unpack-the-binary-to-usrlocalbin-and-make-it-executable" class="md-nav__link">
-    Download CoreDNS from the website, unpack the binary to /usr/local/bin and make it executable.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#install-resolvconf-as-a-tool-to-manually-manage-etcresolvconf" class="md-nav__link">
-    Install resolvconf as a tool to manually manage /etc/resolv.conf.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#set-dns-as-default-in-etcnetworkmanagernetworkmanagerconf" class="md-nav__link">
-    Set dns as default in /etc/NetworkManager/NetworkManager.conf.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-nameserver-127001-to-etcresolvconfresolvconfdhead" class="md-nav__link">
-    Add nameserver 127.0.0.1 to /etc/resolvconf/resolv.conf.d/head.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-etccorednscorefile-and-paste-the-configuration-shown-below" class="md-nav__link">
-    Create /etc/coredns/Corefile and paste the configuration shown below.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#we-are-using-cloudflare-as-a-dns-provider1111" class="md-nav__link">
-    We are using Cloudflare as a DNS provider(1.1.1.1).
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-a-new-user-for-coredns-and-set-some-permissions-on-the-optcoredns-directory" class="md-nav__link">
-    Create a new user for CoreDNS and set some permissions on the /opt/coredns directory.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-the-systemd-service-unit-file-from-coredns-to-etcsystemdsystemcorednsservice" class="md-nav__link">
-    Download the SystemD service unit file from coredns to /etc/systemd/system/coredns.service.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disable-systemds-default-dns-server" class="md-nav__link">
-    Disable SystemD's default DNS server.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enable-and-start-coredns" class="md-nav__link">
-    Enable and start CoreDNS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#now-we-can-able-to-resolve-domain-names-again-eg-try-to-dig-short-kitedu-if-an-ip-address-is-printed-everything-works-fine" class="md-nav__link">
-    Now we can able to resolve domain names, again. E.g. try to dig +short kit.edu. If an IP address is printed, everything works fine.
-  </a>
-  
-    <nav class="md-nav" aria-label="Now we can able to resolve domain names, again. E.g. try to dig +short kit.edu. If an IP address is printed, everything works fine.">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#output" class="md-nav__link">
-    Output
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#output_1" class="md-nav__link">
-    Output
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#output_2" class="md-nav__link">
-    Output
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1197,108 +1078,281 @@
               
                 
 
-<h1 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h1>
-<h3 id="configure-the-host-file-with-the-hostname-and-ips">Configure the host file with the hostname and IPs.<a class="headerlink" href="#configure-the-host-file-with-the-hostname-and-ips" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>cat /etc/hosts
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="mf">192.168.0.100</span><span class="w"> </span><span class="n">dnsserver</span><span class="p">.</span><span class="n">cruise</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="mf">192.168.135.21</span><span class="w"> </span><span class="n">test01</span><span class="p">.</span><span class="n">cruise</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="mf">192.168.0.100</span><span class="w"> </span><span class="n">dnsserver</span><span class="w"></span>
-<span class="mf">127.0.0.1</span><span class="w"> </span><span class="n">localhost</span><span class="w"></span>
-</code></pre></div>
-<h3 id="download-coredns-from-the-website-unpack-the-binary-to-usrlocalbin-and-make-it-executable">Download CoreDNS from the website, unpack the binary to <mark>/usr/local/bin</mark> and make it executable.<a class="headerlink" href="#download-coredns-from-the-website-unpack-the-binary-to-usrlocalbin-and-make-it-executable" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>wget https://github.com/coredns/coredns/releases/download/v1.8.6/coredns_1.8.6_linux_amd64.tgz  
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>tar -xvzf coredns_1.8.6_linux_amd64.tgz
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>cp coredns /usr/local/bin/
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo chmod +x /usr/local/bin/coredns
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>ll /usr/local/bin/coredns
-</code></pre></div></p>
-<h3 id="install-resolvconf-as-a-tool-to-manually-manage-etcresolvconf">Install resolvconf as a tool to manually manage <mark>/etc/resolv.conf</mark>.<a class="headerlink" href="#install-resolvconf-as-a-tool-to-manually-manage-etcresolvconf" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>apt install resolvconf
-</code></pre></div>
-<h3 id="set-dns-as-default-in-etcnetworkmanagernetworkmanagerconf">Set dns as default in <mark>/etc/NetworkManager/NetworkManager.conf</mark>.<a class="headerlink" href="#set-dns-as-default-in-etcnetworkmanagernetworkmanagerconf" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>vi /etc/NetworkManager/NetworkManager.conf
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>dns=default
-</code></pre></div></p>
-<h3 id="add-nameserver-127001-to-etcresolvconfresolvconfdhead">Add nameserver 127.0.0.1 to <mark>/etc/resolvconf/resolv.conf.d/head</mark>.<a class="headerlink" href="#add-nameserver-127001-to-etcresolvconfresolvconfdhead" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>vi /etc/resolvconf/resolv.conf.d/head
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>nameserver 127.0.0.1
-</code></pre></div></p>
-<h3 id="create-etccorednscorefile-and-paste-the-configuration-shown-below">Create <mark>/etc/coredns/Corefile</mark> and paste the configuration shown below.<a class="headerlink" href="#create-etccorednscorefile-and-paste-the-configuration-shown-below" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>vi /etc/coredns/Corefile
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>groophy.org:53 {
-        forward . tls://2606:4700:4700::1111 tls://1.1.1.1
-        hosts /etc/hosts
-log
-        errors
-        Cache
-}
-.:53 {
-        forward . tls://2606:4700:4700::1111 tls://1.1.1.1
-        log
-        errors
-        Cache
-}
-</code></pre></div></p>
-<h3 id="we-are-using-cloudflare-as-a-dns-provider1111">We are using Cloudflare as a DNS provider(1.1.1.1).<a class="headerlink" href="#we-are-using-cloudflare-as-a-dns-provider1111" title="Permanent link">&para;</a></h3>
-<h3 id="create-a-new-user-for-coredns-and-set-some-permissions-on-the-optcoredns-directory">Create a new user for CoreDNS and set some permissions on the <mark>/opt/coredns</mark> directory.<a class="headerlink" href="#create-a-new-user-for-coredns-and-set-some-permissions-on-the-optcoredns-directory" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>sudo useradd -d /var/lib/coredns -m coredns
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo chown coredns:coredns /opt/coredns
-</code></pre></div></p>
-<h3 id="download-the-systemd-service-unit-file-from-coredns-to-etcsystemdsystemcorednsservice">Download the SystemD service unit file from coredns to <mark>/etc/systemd/system/coredns.service</mark>.<a class="headerlink" href="#download-the-systemd-service-unit-file-from-coredns-to-etcsystemdsystemcorednsservice" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>wget https://github.com/coredns/deployment/blob/master/systemd/coredns.service   
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>mv coredns.service /etc/systemd/system/
-</code></pre></div></p>
-<h3 id="disable-systemds-default-dns-server">Disable SystemD's default DNS server.<a class="headerlink" href="#disable-systemds-default-dns-server" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>sudo systemctl stop systemd-resolved <span class="o">&amp;&amp;</span> sudo systemctl disable systemd-resolved
-</code></pre></div>
-<details class="note" open="open">
-<summary>Note</summary>
-<p>From that moment on, you will not be able to resolve any web pages anymore, unless you enable DNS again</p>
-</details>
-<h3 id="enable-and-start-coredns">Enable and start CoreDNS<a class="headerlink" href="#enable-and-start-coredns" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> coredns <span class="o">&amp;&amp;</span> sudo systemctl start coredns
-</code></pre></div>
-<h3 id="now-we-can-able-to-resolve-domain-names-again-eg-try-to-dig-short-kitedu-if-an-ip-address-is-printed-everything-works-fine">Now we can able to resolve domain names, again. E.g. try to <mark>dig +short kit.edu</mark>. If an IP address is printed, everything works fine.<a class="headerlink" href="#now-we-can-able-to-resolve-domain-names-again-eg-try-to-dig-short-kitedu-if-an-ip-address-is-printed-everything-works-fine" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>dig +short kit.edu
-</code></pre></div>
-<h4 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h4>
-<p><div class="highlight"><pre><span></span><code><span class="mf">141.3.128.6</span><span class="w"></span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>nslookup dnsserver.groophy.org
-</code></pre></div></p>
-<h4 id="output_1">Output<a class="headerlink" href="#output_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nl">Server</span><span class="p">:</span><span class="w">         </span><span class="mf">192.168.0.100</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w">        </span><span class="mf">192.168.0.100</span><span class="err">#</span><span class="mi">53</span><span class="w"></span>
-
-<span class="nl">Name</span><span class="p">:</span><span class="w">   </span><span class="n">dnsserver</span><span class="p">.</span><span class="n">cruise</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w"> </span><span class="mf">192.168.0.100</span><span class="w"></span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>nslookup google.com
-</code></pre></div>
-<h4 id="output_2">Output<a class="headerlink" href="#output_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nl">Server</span><span class="p">:</span><span class="w">         </span><span class="mf">192.168.0.100</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w">        </span><span class="mf">192.168.0.100</span><span class="err">#</span><span class="mi">53</span><span class="w"></span>
-
-<span class="n">Non</span><span class="o">-</span><span class="n">authoritative</span><span class="w"> </span><span class="nl">answer</span><span class="p">:</span><span class="w"></span>
-<span class="nl">Name</span><span class="p">:</span><span class="w">   </span><span class="n">google</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w"> </span><span class="mf">142.250.71.14</span><span class="w"></span>
-<span class="nl">Name</span><span class="p">:</span><span class="w">   </span><span class="n">google</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w"> </span><span class="mi">2404</span><span class="o">:</span><span class="mi">6800</span><span class="o">:</span><span class="mi">4007</span><span class="o">:</span><span class="mi">824</span><span class="o">::</span><span class="mi">200</span><span class="n">e</span><span class="w"></span>
-</code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Conclusion</p>
-<p>Able to resolve both internal servers and outside the world.</p>
-</div>
+<p><strong>Multi Master Node Cluster</strong></p>
+<p>Configuring cluster with 3 masters, 3 workers and a load balancer with below configuration.</p>
+<p>Bastion host to access the cluster from outside.</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>Category</strong></th>
+<th align="center"><strong>Configuration</strong></th>
+<th align="center"><strong>Count</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><p>Load Balancer</p><p>(HA-Proxy)</p></td>
+<td align="center"><p>CPUs: 2</p><p>RAM: 2GB</p><p>Disk: 10Gb</p><p>NIC: 1</p></td>
+<td align="center"><p></p><p>1</p><p></p></td>
+</tr>
+<tr>
+<td align="center">Master Nodes</td>
+<td align="center"><p>CPUs: 2</p><p>RAM: 2GB</p><p>Disk: 10GB</p><p>NIC: 1</p></td>
+<td align="center"><p></p><p>3</p></td>
+</tr>
+<tr>
+<td align="center">Worker Nodes</td>
+<td align="center"><p>CPUs: 2</p><p>RAM: 2GB</p><p>Disk: 10GB</p><p>NIC: 1</p></td>
+<td align="center"><p></p><p>3</p></td>
+</tr>
+<tr>
+<td align="center">Bastion</td>
+<td align="center"><p>CPUs: 1</p><p>RAM: 2GB</p><p>Disk: 10GB</p><p>NIC: 1</p></td>
+<td align="center"><p></p><p>1</p><p></p></td>
+</tr>
+</tbody>
+</table>
+<h1 id="share-the-ssh-public-key-of-the-bastion-host-to-the-rest-of-the-server-for-transferring-the-certificates">Share the SSH public key of the Bastion host to the rest of the server for transferring the certificates.<a class="headerlink" href="#share-the-ssh-public-key-of-the-bastion-host-to-the-rest-of-the-server-for-transferring-the-certificates" title="Permanent link">&para;</a></h1>
+<h1 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="_2"><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<h1 id="_3"><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h1>
+<h1 id="_4"><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h1>
+<h1 id="installing-the-haproxy-load-balancer-on-load-balancer-host"><strong>Installing the HAProxy load balancer On Load Balancer Host</strong><a class="headerlink" href="#installing-the-haproxy-load-balancer-on-load-balancer-host" title="Permanent link">&para;</a></h1>
+<p>To deploy three Kubernetes master nodes, one needs to deploy an HAPRoxy load balancer in front of them to distribute the traffic.</p>
+<p><em>apt-get update</em></p>
+<p><em>apt-get upgrade</em></p>
+<p><em>apt-get install haproxy</em></p>
+<p>Add below lines in the haproxy configuration file and restart the service.</p>
+<p>Carefully update the hostnames and IPs to avoid the conflicts.</p>
+<p>If the DNS server is configured, the Load Balancer name can be defined.</p>
+<p><em>vim /etc/haproxy/haproxy.cfg</em></p>
+<p><em>frontend kubernetes</em></p>
+<p><em>bind LoadBalancerIP:6443</em></p>
+<p><em>option tcplog</em></p>
+<p><em>mode tcp</em></p>
+<p><em>default_backend kubernetes-master-nodes</em></p>
+<p><em>backend kubernetes-master-nodes</em></p>
+<p><em>mode tcp</em></p>
+<p><em>balance roundrobin</em></p>
+<p><em>option tcp-check</em></p>
+<p><em>server <Master01 Name> <Master01 IP>:6443 check fall 3 rise 2</em></p>
+<p><em>server <Master02 Name> <Master02 IP>:6443 check fall 3 rise 2</em></p>
+<p><em>server <Master03 Name> <Master03 IP>:6443 check fall 3 rise 2</em></p>
+<p><em>systemctl restart haproxy</em></p>
+<h1 id="_5"><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
+<h1 id="_6"><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h1>
+<h1 id="_7"><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h1>
+<h1 id="_8"><a class="headerlink" href="#_8" title="Permanent link">&para;</a></h1>
+<h1 id="_9"><a class="headerlink" href="#_9" title="Permanent link">&para;</a></h1>
+<h1 id="_10"><a class="headerlink" href="#_10" title="Permanent link">&para;</a></h1>
+<h1 id="installing-the-client-tools-on-the-bastion-host"><strong>Installing the client tools on the Bastion Host</strong><a class="headerlink" href="#installing-the-client-tools-on-the-bastion-host" title="Permanent link">&para;</a></h1>
+<h2 id="installing-cfssl"><strong>Installing cfssl:</strong><a class="headerlink" href="#installing-cfssl" title="Permanent link">&para;</a></h2>
+<p>Download the binaries and add the execution permission to the binaries.</p>
+<p><em>apt-get update</em></p>
+<p><em>wget <a href="https://pkg.cfssl.org/R1.2/cfssl_linux-amd64">https:</a><a href="https://pkg.cfssl.org/R1.2/cfssl_linux-amd64">/</a><a href="https://pkg.cfssl.org/R1.2/cfssl_linux-amd64">/pkg.cfssl.org/R1</a><a href="https://pkg.cfssl.org/R1.2/cfssl_linux-amd64">.</a><a href="https://pkg.cfssl.org/R1.2/cfssl_linux-amd64">2</a><a href="https://pkg.cfssl.org/R1.2/cfssl_linux-amd64">/cfssl_linux-amd64*</a></em></p>
+<p><em>wget <a href="https://pkg.cfssl.org/R1.2/cfssl_linux-amd64">https:</a><a href="https://pkg.cfssl.org/R1.2/cfssl_linux-amd64">/</a><a href="https://pkg.cfssl.org/R1.2/cfssl_linux-amd64">/pkg.cfssl.org/R1</a><a href="https://pkg.cfssl.org/R1.2/cfssl_linux-amd64">.</a><a href="https://pkg.cfssl.org/R1.2/cfssl_linux-amd64">2</a><a href="https://pkg.cfssl.org/R1.2/cfssl_linux-amd64">/cfssl_linux-amd64*</a></em></p>
+<p><em>chmod +x cfssl*</em></p>
+<p><em>mv cfssl_linux-amd64 /usr/local/bin/cfssl</em></p>
+<p><em>mv cfssljson_linux-amd64 /usr/local/bin/cfssljson</em></p>
+<p><em>cfssl version</em></p>
+<h2 id="installing-kubectl"><strong>Installing kubectl:</strong><a class="headerlink" href="#installing-kubectl" title="Permanent link">&para;</a></h2>
+<p><code></code>Download the kubectl binaries, add the execution permission to the binaries.</p>
+<p><em>wget <a href="https://storage.googleapis.com/kubernetes-release/release/v1.12.1/bin/linux/amd64/kubectl">https://storage.googleapis.com/kubernetes-release/release/v1.12.1/bin/linux/amd64/kubectl</a></em></p>
+<p><em>chmod +x kubectl</em></p>
+<p><em>sudo mv kubectl /usr/local/bin</em></p>
+<p><em>kubectl version</em></p>
+<h1 id="generating-the-tls-certificates"><strong>Generating the TLS certificates</strong><a class="headerlink" href="#generating-the-tls-certificates" title="Permanent link">&para;</a></h1>
+<h2 id="creating-a-certificate-authority"><strong>Creating a certificate authority:</strong><a class="headerlink" href="#creating-a-certificate-authority" title="Permanent link">&para;</a></h2>
+<p>Create the certificate authority and certificate authority signing request configuration file.</p>
+<p><em>vim ca-config.json</em></p>
+<p>{</p>
+<p><code></code>"signing": {</p>
+<p><code></code>"default": {</p>
+<p><code></code>"expiry": "8760h"</p>
+<p><code></code>},</p>
+<p><code></code>"profiles": {</p>
+<p><code></code>"kubernetes": {</p>
+<p><code></code>"usages": ["signing", "key encipherment", "server auth", "client auth"],</p>
+<p><code></code>"expiry": "8760h"</p>
+<p><code></code>}</p>
+<p><code></code>}</p>
+<p><code></code>}</p>
+<p>}</p>
+<p><em>vim ca-csr.json</em></p>
+<p>{</p>
+<p><code></code>"CN": "Kubernetes",</p>
+<p><code></code>"key": {</p>
+<p><code></code>"algo": "rsa",</p>
+<p><code></code>"size": 2048</p>
+<p><code></code>},</p>
+<p><code></code>"names": [</p>
+<p><code></code>{</p>
+<p><code></code>"C": "IE",</p>
+<p><code></code>"L": "Cork",</p>
+<p><code></code>"O": "Kubernetes",</p>
+<p><code></code>"OU": "CA",</p>
+<p><code></code>"ST": "Cork Co."</p>
+<p><code></code>}</p>
+<p><code></code>]</p>
+<p>}</p>
+<p>Generate the certificate authority certificate and private key.</p>
+<p><em>cfssl gencert -initca ca-csr.json | cfssljson -bare ca</em></p>
+<p><em>ls -la</em></p>
+<h2 id="creating-the-certificate-for-the-etcd-cluster"><strong>Creating the certificate for the Etcd cluster:</strong><a class="headerlink" href="#creating-the-certificate-for-the-etcd-cluster" title="Permanent link">&para;</a></h2>
+<p>Create the certificate signing request configuration file.</p>
+<p><em>vim kubernetes-csr.json</em></p>
+<p><em>{</em></p>
+<p><code></code><em>"CN": "kubernetes",</em></p>
+<p><code></code><em>"key": {</em></p>
+<p><code></code><em>"algo": "rsa",</em></p>
+<p><code></code><em>"size": 2048</em></p>
+<p><code></code><em>},</em></p>
+<p><code></code><em>"names": [</em></p>
+<p><code></code><em>{</em></p>
+<p><code></code><em>"C": "IE",</em></p>
+<p><code></code><em>"L": "Cork",</em></p>
+<p><code></code><em>"O": "Kubernetes",</em></p>
+<p><code></code><em>"OU": "Kubernetes",</em></p>
+<p><code></code><em>"ST": "Cork Co."</em></p>
+<p><code></code><em>}</em></p>
+<p><code></code><em>]</em></p>
+<p><em>}</em></p>
+<p><strong>Generate the certificate and private key:</strong></p>
+<p>*cfssl gencert *</p>
+<p>*-ca=ca.pem *</p>
+<p>*-ca-key=ca-key.pem *</p>
+<p>*-config=ca-config.json *</p>
+<p>*-hostname=<Master01\_IP>,<Master02\_IP>,<Master03\_IP>,<LoadBalncer\_IP>,127.0.0.1,kubernetes.default *</p>
+<p>*-profile=kubernetes kubernetes-csr.json | *</p>
+<p><em>cfssljson -bare kubernetes</em></p>
+<p><strong>Copy the certificate to the both Master and Worker node:</strong></p>
+<p><em>sudo scp ca.pem kubernetes.pem kubernetes-key.pem opsadmin@<Master01\_IP>:~</em></p>
+<p><em>sudo scp ca.pem kubernetes.pem kubernetes-key.pem opsadmin@<Master02\_IP>:~</em></p>
+<p><em>sudo scp ca.pem kubernetes.pem kubernetes-key.pem opsadmin@<Master03\_IP>:~</em></p>
+<p><em>sudo scp ca.pem kubernetes.pem kubernetes-key.pem opsadmin@<Worker01\_IP>:~</em></p>
+<p><em>sudo scp ca.pem kubernetes.pem kubernetes-key.pem opsadmin@<Worker02\_IP>:~</em></p>
+<p><em>sudo scp ca.pem kubernetes.pem kubernetes-key.pem opsadmin@<worker03\_IP>:~</em></p>
+<h1 id="preparing-the-master-and-worker-nodes-for-kubeadm"><strong>Preparing the Master and Worker nodes for kubeadm</strong><a class="headerlink" href="#preparing-the-master-and-worker-nodes-for-kubeadm" title="Permanent link">&para;</a></h1>
+<h3 id="installing-docker"><strong>Installing Docker:</strong><a class="headerlink" href="#installing-docker" title="Permanent link">&para;</a></h3>
+<p>Add the Docker repository key and Docker repository.</p>
+<p><em>curl -fsSL https://<a href="http://download.docker.com/linux/ubuntu/gpg">download.docker.com/linux/ubuntu/gpg</a> | apt-key add -</em></p>
+<p>*add-apt-repository *</p>
+<p>*"deb<a href="https://download.docker.com/linux/"> </a><a href="https://download.docker.com/linux/">https://download.docker.com/linux/</a><span class="arithmatex">\((. /etc/os-release; echo "\)</span>ID") *</p>
+<p>*$(lsb_release -cs) *</p>
+<p><em>stable"</em></p>
+<p>Update the list of packages and install the docker</p>
+<p><em>apt-get update</em></p>
+<p><em>apt-get install -y docker-ce</em></p>
+<p><em>echo '{"exec-opts": ["native.cgroupdriver=systemd"]}' | sudo tee /etc/docker/daemon.json</em></p>
+<p><em>systemctl daemon-reload</em></p>
+<p><em>systemctl restart docker</em></p>
+<p><em>systemctl enable docker</em></p>
+<h3 id="installing-kubeadm-kublet-and-kubectl"><strong>Installing kubeadm, kublet, and kubectl:</strong><a class="headerlink" href="#installing-kubeadm-kublet-and-kubectl" title="Permanent link">&para;</a></h3>
+<p>Add the Google repository key and Google repository</p>
+<p><em>curl -s https://<a href="http://packages.cloud.google.com/apt/doc/apt-key.gpg">packages.cloud.google.com/apt/doc/apt-key.gpg</a> | apt-key add -</em></p>
+<p><em>vim /etc/apt/sources.list.d/kubernetes.list</em></p>
+<p><em><strong>deb<a href="http://apt.kubernetes.io/">** </a><a href="http://apt.kubernetes.io/">http://apt.kubernetes.io</a></strong> kubernetes-xenial main</em></p>
+<p>Update the list of packages. And install kubelet, kubeadm and kubectl.</p>
+<p><em>apt-get update</em> </p>
+<p><em>apt-get install kubelet kubeadm kubectl -y</em></p>
+<p>Disable the swap.</p>
+<p><em>swapoff -a</em></p>
+<p><em>sed -i '/ swap / s/^/#/' /etc/fstab</em></p>
+<h2 id="installing-and-configuring-etcd-on-the-master-nodes"><strong>Installing and configuring Etcd on the Master Nodes.</strong><a class="headerlink" href="#installing-and-configuring-etcd-on-the-master-nodes" title="Permanent link">&para;</a></h2>
+<p>Create a configuration directory for Etcd and move the certificates into it.</p>
+<p><em>sudo mkdir /etc/etcd /var/lib/etcd</em></p>
+<p><em>sudo mv ~/ca.pem ~/kubernetes.pem ~/kubernetes-key.pem /etc/etcd</em></p>
+<p>Download and extract the etcd archive and move it to /usr/local/bin.</p>
+<p><em>wget https://<a href="http://github.com/coreos">github.com/coreos</a>/etcd/releases/download/v3.3.9/etcd-v3.3.9-linux-amd64.tar.gz</em></p>
+<p><em>tar xvzf etcd-v3.3.9-linux-amd64.tar.gz</em></p>
+<p><em>sudo mv etcd-v3.3.9-linux-amd64/etcd* /usr/local/bin/</em></p>
+<p>Create an etcd systemd unit file.</p>
+<p><em>sudo vim /etc/systemd/system/etcd.service</em></p>
+<p><em>[Unit]</em></p>
+<p><em>Description=etcd</em></p>
+<p><em>Documentation=https://<a href="http://github.com/coreos">github.com/coreos*</a></em></p>
+<p><em>[Service]</em></p>
+<p>*ExecStart=/usr/local/bin/etcd *</p>
+<p><code></code>*--name <host\_IP> *</p>
+<p><code></code>*--cert-file=/etc/etcd/kubernetes.pem *</p>
+<p><code></code>*--key-file=/etc/etcd/kubernetes-key.pem *</p>
+<p><code></code>*--peer-cert-file=/etc/etcd/kubernetes.pem *</p>
+<p><code></code>*--peer-key-file=/etc/etcd/kubernetes-key.pem *</p>
+<p><code></code>*--trusted-ca-file=/etc/etcd/ca.pem *</p>
+<p><code></code>*--peer-trusted-ca-file=/etc/etcd/ca.pem *</p>
+<p><code></code>*--peer-client-cert-auth *</p>
+<p><code></code>*--client-cert-auth *</p>
+<p><code></code>*--initial-advertise-peer-urls https://<host\_IP>:2380 *</p>
+<p><code></code>*--listen-peer-urls https://<host\_IP>:2380 *</p>
+<p><code></code>*--listen-client-urls https://<host\_IP>:2379,<a href="http://127.0.0.1:2379">http://127.0.0.1:2379</a> *</p>
+<p><code></code>*--advertise-client-urls https://<host\_IP>:2379 *</p>
+<p><code></code>*--initial-cluster-token etcd-cluster-0 *</p>
+<p><code></code>*--initial-cluster <Master01\_IP>=https://<Master01\_IP>:2380,<Master02\_IP>=https://<Master02\_IP>:2380,<Master03\_IP>=https://<Master03\_IP>:2380 *</p>
+<p><code></code>*--initial-cluster-state new *</p>
+<p><code></code><em>--data-dir=/var/lib/etcd</em></p>
+<p><em>Restart=on-failure</em></p>
+<p><em>RestartSec=5</em></p>
+<p><em>[Install]</em></p>
+<p><em>WantedBy=multi-user.target</em></p>
+<p>Reload the daemon configuration, Enable and start the etcd.</p>
+<p><em>sudo systemctl daemon-reload</em></p>
+<p><em>sudo systemctl enable etcd</em></p>
+<p><em>sudo systemctl start etcd</em></p>
+<p>Verify that the cluster is up and running.</p>
+<p><em>ETCDCTL_API=3 etcdctl member list</em></p>
+<h1 id="_11"><a class="headerlink" href="#_11" title="Permanent link">&para;</a></h1>
+<h1 id="initializing-the-master-nodes"><strong>Initializing the master nodes</strong><a class="headerlink" href="#initializing-the-master-nodes" title="Permanent link">&para;</a></h1>
+<h2 id="initializing-the-master01-node"><strong>Initializing the master01 node:</strong><a class="headerlink" href="#initializing-the-master01-node" title="Permanent link">&para;</a></h2>
+<p>Create the configuration file for kubeadm.</p>
+<p><em>vim config.yaml</em></p>
+<p><em>sudo kubeadm init --config=config.yaml</em></p>
+<p><em>sudo scp -r /etc/kubernetes/pki opsadmin@<Master02\_IP>:~</em></p>
+<p><em>sudo scp -r /etc/kubernetes/pki opsadmin@<Master03\_IP>:~</em></p>
+<p><em>sudo scp -r config.yaml opsadmin@<Master03\_IP>:~</em></p>
+<p><strong>Configure Master02 and 03</strong></p>
+<p>Remove the apiserver.crt and apiserver.key.</p>
+<p><em>rm ~/pki/apiserver.*</em></p>
+<p>Move the certificates to the /etc/kubernetes directory.</p>
+<p>sudo mv ~/pki /etc/kubernetes/</p>
+<p>sudo kubeadm init --config=config.yaml</p>
+<h1 id="initializing-the-worker-nodes"><strong>Initializing the worker nodes</strong><a class="headerlink" href="#initializing-the-worker-nodes" title="Permanent link">&para;</a></h1>
+<p>Copy the "kubeadm join" command from the lastly created master node and execute on the worker nodes.</p>
+<p><em>sudo kubeadm join 10.10.40.93:6443 --token [your_token] --discovery-token-ca-cert-hash sha256:[your_token_ca_cert_hash]</em></p>
+<h1 id="configuring-kubectl-on-the-client-machine"><strong>Configuring kubectl on the client machine</strong><a class="headerlink" href="#configuring-kubectl-on-the-client-machine" title="Permanent link">&para;</a></h1>
+<p><em>sudo chmod +r /etc/kubernetes/admin.conf</em></p>
+<p><em>scp opsadmin@<Master01\_IP>:/etc/kubernetes/admin.conf .</em></p>
+<p><em><strong>mkdir</strong> ~/.kube</em></p>
+<p><em>mv admin.conf ~/.kube/config</em></p>
+<p><em>chmod 600 ~/.kube/config</em></p>
+<h1 id="deploying-the-calico-as-overlay-network"><strong>Deploying the Calico as overlay network</strong><a class="headerlink" href="#deploying-the-calico-as-overlay-network" title="Permanent link">&para;</a></h1>
+<p><em>kubectl create -f <a href="https://docs.projectcalico.org/manifests/tigera-operator.yaml">https://docs.projectcalico.org/manifests/tigera-operator.yaml</a></em></p>
+<p><em>kubectl create -f <a href="https://docs.projectcalico.org/manifests/custom-resources.yamlwatch">https://docs.projectcalico.org/manifests/custom-resources.yamlwatch</a> kubectl get pods -n calico-system</em></p>
+<p>Validate nodes are in Ready state.</p>
+<p><em>kubectl get nodes</em></p>
+<p>References:</p>
+<p><a href="https://blog.inkubate.io/install-and-configure-a-multi-master-kubernetes-cluster-with-kubeadm/">https://blog.inkubate.io/install-and-configure-a-multi-master-kubernetes-cluster-with-kubeadm/</a></p>
+<p>Analysis:</p>
+<ol>
+<li>Config file error </li>
+</ol>
+<h1 id="this-version-of-kubeadm-only-supports-deploying-clusters-with-the-control-plane-version-1160-current-version-v1120-kubernetes"><a href="https://stackoverflow.com/questions/61926846/this-version-of-kubeadm-only-supports-deploying-clusters-with-the-control-plane">This version of kubeadm only supports deploying clusters with the control plane version &gt;= 1.16.0. Current version: v1.12.0 Kubernetes</a><a class="headerlink" href="#this-version-of-kubeadm-only-supports-deploying-clusters-with-the-control-plane-version-1160-current-version-v1120-kubernetes" title="Permanent link">&para;</a></h1>
+<p><a href="https://stackoverflow.com/questions/61926846/this-version-of-kubeadm-only-supports-deploying-clusters-with-the-control-plane">https://stackoverflow.com/questions/61926846/this-version-of-kubeadm-only-supports-deploying-clusters-with-the-control-plane</a></p>
+<p><a href="https://pkg.go.dev/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2">https://pkg.go.dev/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2</a>
+1. ## Error
+[kubelet-check] It seems like the kubelet isn't running or healthy.</p>
+<p>[kubelet-check] The HTTP call equal to 'curl -sSL <a href="http://localhost:10248/healthz">http://localhost:10248/healthz</a>' failed with error: Get <a href="http://localhost:10248/healthz">http://localhost:10248/healthz</a>: dial tcp 127.0.0.1:10248: connect: connection refused.</p>
+<p>Solution: Updating the /etc/docker/daemon.json file</p>
+<p><a href="https://www.myfreax.com/how-to-solve-dial-tcp-127-0-0-1-10248-connect-connection-refused-during-kubeadm-init-initialization/">https://www.myfreax.com/how-to-solve-dial-tcp-127-0-0-1-10248-connect-connection-refused-during-kubeadm-init-initialization/</a></p>
+<ol>
+<li>Disable swap on all the master and worker nodes.</li>
+<li>Carefully give the hostnames and IPs while configuring configuration files, generating ETCD certificates, hosts and hostname file, HA proxy config file.</li>
+<li>DNS server entry in the resolv.conf and /etc/resolvconf/resolv.conf.d/head.</li>
+<li>kubernetes node not ready but pod running.</li>
+</ol>
+<p>Due to wrong hostname given in HA config file and on the node.</p>
+<p><a href="https://stackoverflow.com/questions/47107117/how-to-debug-when-kubernetes-nodes-are-in-not-ready-state">https://stackoverflow.com/questions/47107117/how-to-debug-when-kubernetes-nodes-are-in-not-ready-state</a></p>
+<p><a href="https://stackoverflow.com/questions/49112336/container-runtime-network-not-ready-cni-config-uninitialized">https://stackoverflow.com/questions/49112336/container-runtime-network-not-ready-cni-config-uninitialized</a></p>
+<p><a href="https://github.com/kubernetes/kubernetes/issues/96459">https://github.com/kubernetes/kubernetes/issues/96459</a></p>
 
               
             </article>

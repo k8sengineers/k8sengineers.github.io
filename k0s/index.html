@@ -17,7 +17,7 @@
     
     
       
-        <title>Setupv1 - K8s Engineers</title>
+        <title>K0s - K8s Engineers</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup" class="md-skip">
+        <a href="#kubernetes-setup-with-k0s" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Setupv1
+              K0s
             
           </span>
         </div>
@@ -213,13 +213,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../kubespray/" class="md-tabs__link">
+      <a href="../kubespray/" class="md-tabs__link md-tabs__link--active">
         K8s Setup
       </a>
     </li>
@@ -387,12 +389,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -451,11 +455,59 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../k0s/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          K0s
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         K0s
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configure-ha-proxy-to-build-a-multi-master-kubernetes-cluster" class="md-nav__link">
+    Configure HA proxy to build a Multi-master Kubernetes cluster:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-multi-master-kubernetes-cluster-with-k0s" class="md-nav__link">
+    Deploying Multi-master Kubernetes cluster with K0S:
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1074,113 +1126,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configure-the-host-file-with-the-hostname-and-ips" class="md-nav__link">
-    Configure the host file with the hostname and IPs.
+  <a href="#configure-ha-proxy-to-build-a-multi-master-kubernetes-cluster" class="md-nav__link">
+    Configure HA proxy to build a Multi-master Kubernetes cluster:
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#download-coredns-from-the-website-unpack-the-binary-to-usrlocalbin-and-make-it-executable" class="md-nav__link">
-    Download CoreDNS from the website, unpack the binary to /usr/local/bin and make it executable.
+  <a href="#deploying-multi-master-kubernetes-cluster-with-k0s" class="md-nav__link">
+    Deploying Multi-master Kubernetes cluster with K0S:
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#install-resolvconf-as-a-tool-to-manually-manage-etcresolvconf" class="md-nav__link">
-    Install resolvconf as a tool to manually manage /etc/resolv.conf.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#set-dns-as-default-in-etcnetworkmanagernetworkmanagerconf" class="md-nav__link">
-    Set dns as default in /etc/NetworkManager/NetworkManager.conf.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#add-nameserver-127001-to-etcresolvconfresolvconfdhead" class="md-nav__link">
-    Add nameserver 127.0.0.1 to /etc/resolvconf/resolv.conf.d/head.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-etccorednscorefile-and-paste-the-configuration-shown-below" class="md-nav__link">
-    Create /etc/coredns/Corefile and paste the configuration shown below.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#we-are-using-cloudflare-as-a-dns-provider1111" class="md-nav__link">
-    We are using Cloudflare as a DNS provider(1.1.1.1).
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-a-new-user-for-coredns-and-set-some-permissions-on-the-optcoredns-directory" class="md-nav__link">
-    Create a new user for CoreDNS and set some permissions on the /opt/coredns directory.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-the-systemd-service-unit-file-from-coredns-to-etcsystemdsystemcorednsservice" class="md-nav__link">
-    Download the SystemD service unit file from coredns to /etc/systemd/system/coredns.service.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disable-systemds-default-dns-server" class="md-nav__link">
-    Disable SystemD's default DNS server.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enable-and-start-coredns" class="md-nav__link">
-    Enable and start CoreDNS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#now-we-can-able-to-resolve-domain-names-again-eg-try-to-dig-short-kitedu-if-an-ip-address-is-printed-everything-works-fine" class="md-nav__link">
-    Now we can able to resolve domain names, again. E.g. try to dig +short kit.edu. If an IP address is printed, everything works fine.
-  </a>
-  
-    <nav class="md-nav" aria-label="Now we can able to resolve domain names, again. E.g. try to dig +short kit.edu. If an IP address is printed, everything works fine.">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#output" class="md-nav__link">
-    Output
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#output_1" class="md-nav__link">
-    Output
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#output_2" class="md-nav__link">
-    Output
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1197,108 +1152,119 @@
               
                 
 
-<h1 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h1>
-<h3 id="configure-the-host-file-with-the-hostname-and-ips">Configure the host file with the hostname and IPs.<a class="headerlink" href="#configure-the-host-file-with-the-hostname-and-ips" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>cat /etc/hosts
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="mf">192.168.0.100</span><span class="w"> </span><span class="n">dnsserver</span><span class="p">.</span><span class="n">cruise</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="mf">192.168.135.21</span><span class="w"> </span><span class="n">test01</span><span class="p">.</span><span class="n">cruise</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="mf">192.168.0.100</span><span class="w"> </span><span class="n">dnsserver</span><span class="w"></span>
-<span class="mf">127.0.0.1</span><span class="w"> </span><span class="n">localhost</span><span class="w"></span>
-</code></pre></div>
-<h3 id="download-coredns-from-the-website-unpack-the-binary-to-usrlocalbin-and-make-it-executable">Download CoreDNS from the website, unpack the binary to <mark>/usr/local/bin</mark> and make it executable.<a class="headerlink" href="#download-coredns-from-the-website-unpack-the-binary-to-usrlocalbin-and-make-it-executable" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>wget https://github.com/coredns/coredns/releases/download/v1.8.6/coredns_1.8.6_linux_amd64.tgz  
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>tar -xvzf coredns_1.8.6_linux_amd64.tgz
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>cp coredns /usr/local/bin/
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo chmod +x /usr/local/bin/coredns
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>ll /usr/local/bin/coredns
-</code></pre></div></p>
-<h3 id="install-resolvconf-as-a-tool-to-manually-manage-etcresolvconf">Install resolvconf as a tool to manually manage <mark>/etc/resolv.conf</mark>.<a class="headerlink" href="#install-resolvconf-as-a-tool-to-manually-manage-etcresolvconf" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>apt install resolvconf
-</code></pre></div>
-<h3 id="set-dns-as-default-in-etcnetworkmanagernetworkmanagerconf">Set dns as default in <mark>/etc/NetworkManager/NetworkManager.conf</mark>.<a class="headerlink" href="#set-dns-as-default-in-etcnetworkmanagernetworkmanagerconf" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>vi /etc/NetworkManager/NetworkManager.conf
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>dns=default
-</code></pre></div></p>
-<h3 id="add-nameserver-127001-to-etcresolvconfresolvconfdhead">Add nameserver 127.0.0.1 to <mark>/etc/resolvconf/resolv.conf.d/head</mark>.<a class="headerlink" href="#add-nameserver-127001-to-etcresolvconfresolvconfdhead" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>vi /etc/resolvconf/resolv.conf.d/head
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>nameserver 127.0.0.1
-</code></pre></div></p>
-<h3 id="create-etccorednscorefile-and-paste-the-configuration-shown-below">Create <mark>/etc/coredns/Corefile</mark> and paste the configuration shown below.<a class="headerlink" href="#create-etccorednscorefile-and-paste-the-configuration-shown-below" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>vi /etc/coredns/Corefile
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>groophy.org:53 {
-        forward . tls://2606:4700:4700::1111 tls://1.1.1.1
-        hosts /etc/hosts
-log
-        errors
-        Cache
-}
-.:53 {
-        forward . tls://2606:4700:4700::1111 tls://1.1.1.1
-        log
-        errors
-        Cache
-}
-</code></pre></div></p>
-<h3 id="we-are-using-cloudflare-as-a-dns-provider1111">We are using Cloudflare as a DNS provider(1.1.1.1).<a class="headerlink" href="#we-are-using-cloudflare-as-a-dns-provider1111" title="Permanent link">&para;</a></h3>
-<h3 id="create-a-new-user-for-coredns-and-set-some-permissions-on-the-optcoredns-directory">Create a new user for CoreDNS and set some permissions on the <mark>/opt/coredns</mark> directory.<a class="headerlink" href="#create-a-new-user-for-coredns-and-set-some-permissions-on-the-optcoredns-directory" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>sudo useradd -d /var/lib/coredns -m coredns
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>sudo chown coredns:coredns /opt/coredns
-</code></pre></div></p>
-<h3 id="download-the-systemd-service-unit-file-from-coredns-to-etcsystemdsystemcorednsservice">Download the SystemD service unit file from coredns to <mark>/etc/systemd/system/coredns.service</mark>.<a class="headerlink" href="#download-the-systemd-service-unit-file-from-coredns-to-etcsystemdsystemcorednsservice" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>wget https://github.com/coredns/deployment/blob/master/systemd/coredns.service   
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>mv coredns.service /etc/systemd/system/
-</code></pre></div></p>
-<h3 id="disable-systemds-default-dns-server">Disable SystemD's default DNS server.<a class="headerlink" href="#disable-systemds-default-dns-server" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>sudo systemctl stop systemd-resolved <span class="o">&amp;&amp;</span> sudo systemctl disable systemd-resolved
-</code></pre></div>
-<details class="note" open="open">
-<summary>Note</summary>
-<p>From that moment on, you will not be able to resolve any web pages anymore, unless you enable DNS again</p>
+<h1 id="kubernetes-setup-with-k0s">Kubernetes Setup with k0S<a class="headerlink" href="#kubernetes-setup-with-k0s" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Cluster Build Tool  -K0s</li>
+</ul>
+<details class="info" open="open">
+<summary>For this activity, deploy 6 vm’s instances</summary>
 </details>
-<h3 id="enable-and-start-coredns">Enable and start CoreDNS<a class="headerlink" href="#enable-and-start-coredns" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>sudo systemctl <span class="nb">enable</span> coredns <span class="o">&amp;&amp;</span> sudo systemctl start coredns
+<table>
+<thead>
+<tr>
+<th>Node Name</th>
+<th>VM Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HA Proxy</td>
+<td>1 gb ram, 1 cpu</td>
+</tr>
+<tr>
+<td>Control Plane (2 Nodes)</td>
+<td>2 gb ram, 2 cpu, 50 GB HD</td>
+</tr>
+<tr>
+<td>Worker (2-Nodes)</td>
+<td>2 gb ram, 2 cpu, 50 GB HD</td>
+</tr>
+<tr>
+<td>Bastion Node</td>
+<td>2 gb ram, 2 cpu</td>
+</tr>
+</tbody>
+</table>
+<h3 id="configure-ha-proxy-to-build-a-multi-master-kubernetes-cluster">Configure HA proxy to build a Multi-master Kubernetes cluster:<a class="headerlink" href="#configure-ha-proxy-to-build-a-multi-master-kubernetes-cluster" title="Permanent link">&para;</a></h3>
+<p>Download and install the haproxy
+<div class="highlight"><pre><span></span><code>apt-get update <span class="o">&amp;&amp;</span> apt-get install haproxy -y
 </code></pre></div>
-<h3 id="now-we-can-able-to-resolve-domain-names-again-eg-try-to-dig-short-kitedu-if-an-ip-address-is-printed-everything-works-fine">Now we can able to resolve domain names, again. E.g. try to <mark>dig +short kit.edu</mark>. If an IP address is printed, everything works fine.<a class="headerlink" href="#now-we-can-able-to-resolve-domain-names-again-eg-try-to-dig-short-kitedu-if-an-ip-address-is-printed-everything-works-fine" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>dig +short kit.edu
+Update haproxy configuration with as below with the details of the Ansible and Master nodes IP
+<div class="highlight"><pre><span></span><code>vi /etc/haproxy/haproxy.cfg
 </code></pre></div>
-<h4 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h4>
-<p><div class="highlight"><pre><span></span><code><span class="mf">141.3.128.6</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">listen</span><span class="w"> </span><span class="n">kubernetes</span><span class="o">-</span><span class="n">apiserver</span><span class="o">-</span><span class="n">https</span><span class="w"></span>
+<span class="w">  </span><span class="n">bind</span><span class="w"> </span><span class="o">&lt;</span><span class="n">LoadBalancer_Hostname</span><span class="o">/</span><span class="n">IP</span><span class="o">&gt;:</span><span class="mi">8383</span><span class="w"></span>
+<span class="w">  </span><span class="n">mode</span><span class="w"> </span><span class="n">tcp</span><span class="w"></span>
+<span class="w">  </span><span class="n">option</span><span class="w"> </span><span class="n">log</span><span class="o">-</span><span class="n">health</span><span class="o">-</span><span class="n">checks</span><span class="w"></span>
+<span class="w">  </span><span class="n">timeout</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="mi">3</span><span class="n">h</span><span class="w"></span>
+<span class="w">  </span><span class="n">timeout</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="mi">3</span><span class="n">h</span><span class="w"></span>
+<span class="w">  </span><span class="n">server</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Master01_Hostname</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Master01_IP</span><span class="o">&gt;:</span><span class="mi">6443</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="n">check</span><span class="o">-</span><span class="n">ssl</span><span class="w"> </span><span class="n">verify</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="n">inter</span><span class="w"> </span><span class="mi">10000</span><span class="w"></span>
+<span class="w">  </span><span class="n">server</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Master02_Hostname</span><span class="o">&gt;</span><span class="w">  </span><span class="o">&lt;</span><span class="n">Master02_IP</span><span class="o">&gt;:</span><span class="mi">6443</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="n">check</span><span class="o">-</span><span class="n">ssl</span><span class="w"> </span><span class="n">verify</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="n">inter</span><span class="w"> </span><span class="mi">10000</span><span class="w"></span>
+<span class="w">  </span><span class="n">server</span><span class="w"> </span><span class="o">&lt;</span><span class="n">Master03_Hostname</span><span class="o">&gt;</span><span class="w">  </span><span class="o">&lt;</span><span class="n">Master03_IP</span><span class="o">&gt;:</span><span class="mi">6443</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="n">check</span><span class="o">-</span><span class="n">ssl</span><span class="w"> </span><span class="n">verify</span><span class="w"> </span><span class="n">none</span><span class="w"> </span><span class="n">inter</span><span class="w"> </span><span class="mi">10000</span><span class="w"></span>
+<span class="w">  </span><span class="n">balance</span><span class="w"> </span><span class="n">roundrobin</span><span class="w"></span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>nslookup dnsserver.groophy.org
+<div class="highlight"><pre><span></span><code>systemctl restart haproxy
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>netstat -atnlp
 </code></pre></div></p>
-<h4 id="output_1">Output<a class="headerlink" href="#output_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nl">Server</span><span class="p">:</span><span class="w">         </span><span class="mf">192.168.0.100</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w">        </span><span class="mf">192.168.0.100</span><span class="err">#</span><span class="mi">53</span><span class="w"></span>
+<h2 id="deploying-multi-master-kubernetes-cluster-with-k0s">Deploying Multi-master Kubernetes cluster with K0S:<a class="headerlink" href="#deploying-multi-master-kubernetes-cluster-with-k0s" title="Permanent link">&para;</a></h2>
+<p>Download the k0sctl binary.
+<div class="highlight"><pre><span></span><code>wget https://github.com/k0sproject/k0sctl/releases/download/v0.11.4/k0sctl-linux-x64
+</code></pre></div>
+Make the k0sctl binary executable and move it to the Bin directory
+<div class="highlight"><pre><span></span><code>mv k0sctl-linux-x64 /usr/bin/k0sctl
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>chmod +x /usr/bin/k0sctl
+</code></pre></div>
+Initialize the cluster and build the con
+<div class="highlight"><pre><span></span><code>k0sctl init &gt; k0s/clusterconfig.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">k0sctl.k0sproject.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Cluster</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">k0s-cluster</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">hosts</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">ssh</span><span class="p">:</span>
+    <span class="nt">address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Master01_IP&gt;</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">opsadmin</span>
+    <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">22</span>
+    <span class="nt">keyPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">loginkey.pem</span>
+    <span class="nt">role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">controller</span>
+  <span class="p p-Indicator">-</span> <span class="nt">ssh</span><span class="p">:</span>
+    <span class="nt">address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Master02_IP&gt;</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">opsadmin</span>
+    <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">22</span>
+    <span class="nt">keyPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">loginkey.pem</span>
+    <span class="nt">role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">controller</span>
+    <span class="p p-Indicator">-</span> <span class="nt">ssh</span><span class="p">:</span>
+    <span class="nt">address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Worker01_IP&gt;</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">opsadmin</span>
+    <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">22</span>
+    <span class="nt">keyPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">loginkey.pem</span>
+    <span class="nt">role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">worker</span>
+  <span class="p p-Indicator">-</span> <span class="nt">ssh</span><span class="p">:</span>
+    <span class="nt">address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;Worker02_IP&gt;</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">opsadmin</span>
+    <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">22</span>
+    <span class="nt">keyPath</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">loginkey.pem</span>
+    <span class="nt">role</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">worker</span>
 
-<span class="nl">Name</span><span class="p">:</span><span class="w">   </span><span class="n">dnsserver</span><span class="p">.</span><span class="n">cruise</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w"> </span><span class="mf">192.168.0.100</span><span class="w"></span>
+  <span class="nt">k0s</span><span class="p">:</span>
+   <span class="nt">config</span><span class="p">:</span>
+    <span class="nt">spec</span><span class="p">:</span>
+    <span class="nt">api</span><span class="p">:</span>
+        <span class="nt">externalAddress</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;LoadBalancer_Hostname/IP&gt;</span>
+        <span class="nt">sans</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">&lt;LoadBalancer_Hostname/IP&gt;</span>
+   <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.22.3+k0s.0</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>nslookup google.com
+Apply the cluster config file using k0sctl.
+<div class="highlight"><pre><span></span><code>k0sctl apply --config k0s/clusterconfig.yaml
 </code></pre></div>
-<h4 id="output_2">Output<a class="headerlink" href="#output_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nl">Server</span><span class="p">:</span><span class="w">         </span><span class="mf">192.168.0.100</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w">        </span><span class="mf">192.168.0.100</span><span class="err">#</span><span class="mi">53</span><span class="w"></span>
-
-<span class="n">Non</span><span class="o">-</span><span class="n">authoritative</span><span class="w"> </span><span class="nl">answer</span><span class="p">:</span><span class="w"></span>
-<span class="nl">Name</span><span class="p">:</span><span class="w">   </span><span class="n">google</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w"> </span><span class="mf">142.250.71.14</span><span class="w"></span>
-<span class="nl">Name</span><span class="p">:</span><span class="w">   </span><span class="n">google</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-<span class="nl">Address</span><span class="p">:</span><span class="w"> </span><span class="mi">2404</span><span class="o">:</span><span class="mi">6800</span><span class="o">:</span><span class="mi">4007</span><span class="o">:</span><span class="mi">824</span><span class="o">::</span><span class="mi">200</span><span class="n">e</span><span class="w"></span>
-</code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Conclusion</p>
-<p>Able to resolve both internal servers and outside the world.</p>
-</div>
+Validate the cluster.
+<div class="highlight"><pre><span></span><code>k0sctl kubectl get nodes
+</code></pre></div></p>
 
               
             </article>
@@ -1313,6 +1279,41 @@ log
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../kubeadm_setup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Kubeadm Cluster Setup" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Kubeadm Cluster Setup
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../klusternetes/" class="md-footer__link md-footer__link--next" aria-label="Next: Klusternetes" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Klusternetes
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
